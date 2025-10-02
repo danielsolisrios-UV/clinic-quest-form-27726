@@ -88,6 +88,105 @@ const FormularioClinicoGamificado = () => {
   const [showAchievement, setShowAchievement] = useState<any>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveTimeout, setSaveTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+
+  // Validación y formato de campos numéricos
+  const validateNumericField = (value: string, fieldType: 'integer' | 'phone' | 'nit'): { isValid: boolean; error?: string } => {
+    if (!value) return { isValid: true }; // Campos vacíos se validan en el submit
+
+    switch (fieldType) {
+      case 'integer':
+        if (!/^\d+$/.test(value)) {
+          return { isValid: false, error: 'Solo se permiten números enteros positivos' };
+        }
+        if (parseInt(value) < 1) {
+          return { isValid: false, error: 'El valor mínimo es 1' };
+        }
+        return { isValid: true };
+
+      case 'phone':
+        const phoneDigits = value.replace(/\D/g, '');
+        if (phoneDigits.length > 0 && phoneDigits.length !== 10) {
+          return { isValid: false, error: 'El teléfono debe tener exactamente 10 dígitos' };
+        }
+        return { isValid: true };
+
+      case 'nit':
+        // Formato NIT colombiano: 123456789-0 o sin guión
+        const nitPattern = /^\d{1,9}(-?\d)?$/;
+        if (!nitPattern.test(value)) {
+          return { isValid: false, error: 'Formato de NIT inválido. Use: 123456789-0' };
+        }
+        return { isValid: true };
+
+      default:
+        return { isValid: true };
+    }
+  };
+
+  const formatPhoneInput = (value: string): string => {
+    // Remover todos los caracteres no numéricos
+    const digits = value.replace(/\D/g, '');
+    // Limitar a 10 dígitos
+    return digits.slice(0, 10);
+  };
+
+  const formatNitInput = (value: string): string => {
+    // Remover todos los caracteres excepto números y guión
+    let cleaned = value.replace(/[^\d-]/g, '');
+    
+    // Asegurar que solo haya un guión y que esté antes del último dígito
+    const parts = cleaned.split('-');
+    if (parts.length > 2) {
+      cleaned = parts[0] + '-' + parts.slice(1).join('');
+    }
+    
+    return cleaned;
+  };
+
+  const formatIntegerInput = (value: string): string => {
+    // Solo permitir dígitos
+    return value.replace(/\D/g, '');
+  };
+
+  const handleNumericInputChange = (
+    section: string,
+    field: string,
+    value: string,
+    fieldType: 'integer' | 'phone' | 'nit'
+  ) => {
+    // Formatear el valor según el tipo de campo
+    let formattedValue = value;
+    switch (fieldType) {
+      case 'integer':
+        formattedValue = formatIntegerInput(value);
+        break;
+      case 'phone':
+        formattedValue = formatPhoneInput(value);
+        break;
+      case 'nit':
+        formattedValue = formatNitInput(value);
+        break;
+    }
+
+    // Validar el campo
+    const validation = validateNumericField(formattedValue, fieldType);
+    
+    // Actualizar errores de validación
+    const errorKey = `${section}.${field}`;
+    if (!validation.isValid && validation.error) {
+      setValidationErrors(prev => ({ ...prev, [errorKey]: validation.error! }));
+    } else {
+      setValidationErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[errorKey];
+        return newErrors;
+      });
+    }
+
+    // Actualizar el formulario
+    handleInputChange(section, field, formattedValue);
+  };
 
   const sections = [
     { 
@@ -422,11 +521,14 @@ const FormularioClinicoGamificado = () => {
             <label className="block text-sm font-medium text-foreground mb-1">NIT de la Empresa *</label>
             <input
               type="text"
-              className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"
+              className={`w-full px-3 py-2 border ${validationErrors['informacionGeneral.nit'] ? 'border-destructive' : 'border-input'} bg-background rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition`}
               value={(formData.informacionGeneral as any).nit || ''}
-              onChange={(e) => handleInputChange('informacionGeneral', 'nit', e.target.value)}
-              placeholder="900.123.456-7"
+              onChange={(e) => handleNumericInputChange('informacionGeneral', 'nit', e.target.value, 'nit')}
+              placeholder="123456789-0"
             />
+            {validationErrors['informacionGeneral.nit'] && (
+              <p className="text-sm text-destructive mt-1">{validationErrors['informacionGeneral.nit']}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">Naturaleza Jurídica</label>
@@ -495,10 +597,15 @@ const FormularioClinicoGamificado = () => {
           <label className="block text-sm font-medium text-foreground mb-1">Teléfono</label>
           <input
             type="tel"
-            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary"
+            className={`w-full px-3 py-2 border ${validationErrors['informacionGeneral.telefono'] ? 'border-destructive' : 'border-input'} bg-background rounded-lg focus:ring-2 focus:ring-primary`}
             value={(formData.informacionGeneral as any).telefono || ''}
-            onChange={(e) => handleInputChange('informacionGeneral', 'telefono', e.target.value)}
+            onChange={(e) => handleNumericInputChange('informacionGeneral', 'telefono', e.target.value, 'phone')}
+            placeholder="3001234567"
+            maxLength={10}
           />
+          {validationErrors['informacionGeneral.telefono'] && (
+            <p className="text-sm text-destructive mt-1">{validationErrors['informacionGeneral.telefono']}</p>
+          )}
         </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-foreground mb-1">Dirección</label>
@@ -530,11 +637,16 @@ const FormularioClinicoGamificado = () => {
         <div>
           <label className="block text-sm font-medium text-foreground mb-1">N° de Sedes</label>
           <input
-            type="number"
-            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary"
+            type="text"
+            inputMode="numeric"
+            className={`w-full px-3 py-2 border ${validationErrors['informacionGeneral.numeroSedes'] ? 'border-destructive' : 'border-input'} bg-background rounded-lg focus:ring-2 focus:ring-primary`}
             value={(formData.informacionGeneral as any).numeroSedes || ''}
-            onChange={(e) => handleInputChange('informacionGeneral', 'numeroSedes', e.target.value)}
+            onChange={(e) => handleNumericInputChange('informacionGeneral', 'numeroSedes', e.target.value, 'integer')}
+            placeholder="Ejemplo: 1"
           />
+          {validationErrors['informacionGeneral.numeroSedes'] && (
+            <p className="text-sm text-destructive mt-1">{validationErrors['informacionGeneral.numeroSedes']}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-foreground mb-1">Cantidad de Empleados</label>
@@ -622,14 +734,33 @@ const FormularioClinicoGamificado = () => {
                   <label className="block text-sm font-medium text-foreground mb-1">Teléfono</label>
                   <input
                     type="tel"
-                    className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-secondary"
+                    className={`w-full px-3 py-2 border ${validationErrors[`sedes.${index}.telefono`] ? 'border-destructive' : 'border-input'} bg-background rounded-lg focus:ring-2 focus:ring-secondary`}
                     value={sede.telefono || ''}
                     onChange={(e) => {
+                      const formattedValue = formatPhoneInput(e.target.value);
+                      const validation = validateNumericField(formattedValue, 'phone');
+                      
+                      const errorKey = `sedes.${index}.telefono`;
+                      if (!validation.isValid && validation.error) {
+                        setValidationErrors(prev => ({ ...prev, [errorKey]: validation.error! }));
+                      } else {
+                        setValidationErrors(prev => {
+                          const newErrors = { ...prev };
+                          delete newErrors[errorKey];
+                          return newErrors;
+                        });
+                      }
+                      
                       const newSedes = [...formData.sedes];
-                      newSedes[index].telefono = e.target.value;
+                      newSedes[index].telefono = formattedValue;
                       setFormData({ ...formData, sedes: newSedes });
                     }}
+                    placeholder="3001234567"
+                    maxLength={10}
                   />
+                  {validationErrors[`sedes.${index}.telefono`] && (
+                    <p className="text-sm text-destructive mt-1">{validationErrors[`sedes.${index}.telefono`]}</p>
+                  )}
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-foreground mb-1">Dirección</label>
@@ -665,15 +796,34 @@ const FormularioClinicoGamificado = () => {
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">N° de Camas</label>
                   <input
-                    type="number"
-                    className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-secondary"
+                    type="text"
+                    inputMode="numeric"
+                    className={`w-full px-3 py-2 border ${validationErrors[`sedes.${index}.numeroCamas`] ? 'border-destructive' : 'border-input'} bg-background rounded-lg focus:ring-2 focus:ring-secondary`}
                     value={sede.numeroCamas || ''}
                     onChange={(e) => {
+                      const formattedValue = formatIntegerInput(e.target.value);
+                      const validation = validateNumericField(formattedValue, 'integer');
+                      
+                      const errorKey = `sedes.${index}.numeroCamas`;
+                      if (!validation.isValid && validation.error) {
+                        setValidationErrors(prev => ({ ...prev, [errorKey]: validation.error! }));
+                      } else {
+                        setValidationErrors(prev => {
+                          const newErrors = { ...prev };
+                          delete newErrors[errorKey];
+                          return newErrors;
+                        });
+                      }
+                      
                       const newSedes = [...formData.sedes];
-                      newSedes[index].numeroCamas = e.target.value;
+                      newSedes[index].numeroCamas = formattedValue;
                       setFormData({ ...formData, sedes: newSedes });
                     }}
+                    placeholder="Ejemplo: 10"
                   />
+                  {validationErrors[`sedes.${index}.numeroCamas`] && (
+                    <p className="text-sm text-destructive mt-1">{validationErrors[`sedes.${index}.numeroCamas`]}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">Software Asistencial</label>
