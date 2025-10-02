@@ -82,7 +82,7 @@ const Auth = () => {
       }
 
       toast.success('¡Registro exitoso! Redirigiendo...');
-      // The user will be automatically logged in and redirected by the auth state change
+      navigate('/');
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
@@ -125,7 +125,7 @@ const Auth = () => {
       }
 
       toast.success('¡Inicio de sesión exitoso! Redirigiendo...');
-      // The user will be redirected by the auth state change
+      navigate('/');
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};

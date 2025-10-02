@@ -16,13 +16,6 @@ export const useAuth = () => {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
-
-        // Handle auth events
-        if (event === 'SIGNED_IN') {
-          navigate('/');
-        } else if (event === 'SIGNED_OUT') {
-          navigate('/auth');
-        }
       }
     );
 
@@ -34,7 +27,7 @@ export const useAuth = () => {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   const signOut = async () => {
     await supabase.auth.signOut();
