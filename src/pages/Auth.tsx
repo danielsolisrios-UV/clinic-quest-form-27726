@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { Lock, Mail, User, LogIn, UserPlus, Loader2 } from 'lucide-react';
+import { Lock, Mail, User, LogIn, UserPlus, Loader2, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
 
 // Validation schemas
@@ -40,6 +40,9 @@ const Auth = () => {
     password: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showSignupPassword, setShowSignupPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -196,13 +199,21 @@ const Auth = () => {
                       <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         id="login-password"
-                        type="password"
+                        type={showLoginPassword ? "text" : "password"}
                         placeholder="••••••••"
-                        className="pl-10"
+                        className="pl-10 pr-10"
                         value={loginData.password}
                         onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                         disabled={isLoading}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowLoginPassword(!showLoginPassword)}
+                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        disabled={isLoading}
+                      >
+                        {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
                     </div>
                     {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
                   </div>
@@ -278,13 +289,21 @@ const Auth = () => {
                       <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         id="signup-password"
-                        type="password"
+                        type={showSignupPassword ? "text" : "password"}
                         placeholder="Mínimo 8 caracteres"
-                        className="pl-10"
+                        className="pl-10 pr-10"
                         value={signUpData.password}
                         onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
                         disabled={isLoading}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowSignupPassword(!showSignupPassword)}
+                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        disabled={isLoading}
+                      >
+                        {showSignupPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
                     </div>
                     {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
                   </div>
@@ -295,13 +314,21 @@ const Auth = () => {
                       <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                       <Input
                         id="signup-confirm"
-                        type="password"
+                        type={showConfirmPassword ? "text" : "password"}
                         placeholder="Repite tu contraseña"
-                        className="pl-10"
+                        className="pl-10 pr-10"
                         value={signUpData.confirmPassword}
                         onChange={(e) => setSignUpData({ ...signUpData, confirmPassword: e.target.value })}
                         disabled={isLoading}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        disabled={isLoading}
+                      >
+                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      </button>
                     </div>
                     {errors.confirmPassword && <p className="text-sm text-destructive">{errors.confirmPassword}</p>}
                   </div>
