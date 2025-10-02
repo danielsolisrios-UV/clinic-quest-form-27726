@@ -63,6 +63,54 @@ interface CapacidadInstalada {
   facturacion?: string;
   empleadosNomina?: string;
   portalEmpleados?: string;
+  // Via EHR
+  consultoriasUroginecologia?: string;
+  consultaExternaMedicinaGeneral?: string;
+  consultaExternaOdontologia?: string;
+  consultaExternaPediatria?: string;
+  consultaExternaEspecializada?: string;
+  consultaPrioritaria?: string;
+  consultoriasIrasAmbCentros?: string;
+  consultoriasIrasHcCentros?: string;
+  camasCuidadoIntermedioIntensivo?: string;
+  obstetricianNeonatologia?: string;
+  obstetriciaParto?: string;
+  ginecologiaHospitalaria?: string;
+  salaPartoRecuperacion?: string;
+  neonatologiaSaludMujer?: string;
+  sintomatologiaCovid?: string;
+  inmunizacion?: string;
+  unificacionDatos?: string;
+  ambulancias?: string;
+  // Via RCM
+  admision?: string;
+  contrataciones?: string;
+  cuentasMedicas?: string;
+  cuentasPaciente?: string;
+  referenciasAutorizaciones?: string;
+  autorizador?: string;
+  // Via ERP
+  farmacia?: string;
+  proveedores?: string;
+  administracionRecursos?: string;
+  activosFijos?: string;
+  centrosCosto?: string;
+  administracionInfraestructura?: string;
+  almacenGeneral?: string;
+  mantenimientoFisico?: string;
+  // General
+  multiEmpresa?: string;
+  multiSede?: string;
+  indiceCloud?: string;
+  lanzadorEcosistemas?: string;
+  // Via HCM
+  recortabilidad24h?: string;
+  numeroEmpleados?: string;
+  porcentaje401?: string;
+  // Índice Electrónico
+  numeroElectronico?: string;
+  // IndiGO Storage
+  textoAlmacenamiento?: string;
 }
 
 interface FormData {
@@ -1027,6 +1075,386 @@ const FormularioClinicoGamificado = () => {
           />
         </div>
       </div>
+
+      {/* Via EHR Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">Via EHR</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consultorías Uroginecología *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultoriasUroginecologia || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultoriasUroginecologia', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consulta Externa (Medicina General) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultaExternaMedicinaGeneral || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultaExternaMedicinaGeneral', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consulta Externa (Odontología) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultaExternaOdontologia || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultaExternaOdontologia', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consulta Externa (Pediatría) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultaExternaPediatria || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultaExternaPediatria', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consulta Externa Especializada *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultaExternaEspecializada || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultaExternaEspecializada', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consulta Prioritaria *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultaPrioritaria || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultaPrioritaria', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consultorías IRAS Amb Centros *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultoriasIrasAmbCentros || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultoriasIrasAmbCentros', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Consultorías IRAS HC Centros *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).consultoriasIrasHcCentros || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'consultoriasIrasHcCentros', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Camas de Cuidado Intermedio e Intensivo *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).camasCuidadoIntermedioIntensivo || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'camasCuidadoIntermedioIntensivo', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Obstetricia/Neonatología *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).obstetricianNeonatologia || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'obstetricianNeonatologia', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Obstetricia/Parto/Egreso *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).obstetriciaParto || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'obstetriciaParto', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Ginecología Hospitalaria *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).ginecologiaHospitalaria || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'ginecologiaHospitalaria', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Sala de Parto/Recuperación de Salud *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).salaPartoRecuperacion || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'salaPartoRecuperacion', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Neonatología/Salud de la Mujer *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).neonatologiaSaludMujer || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'neonatologiaSaludMujer', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Sintomatología y Señalización (sospecha COVID) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).sintomatologiaCovid || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'sintomatologiaCovid', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Inmunización *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).inmunizacion || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'inmunizacion', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Unificación Datos *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).unificacionDatos || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'unificacionDatos', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Ambulancias *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).ambulancias || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'ambulancias', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Via RCM Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">Via RCM (Revenue Cycle Management)</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Admisión *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).admision || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'admision', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Contrataciones *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).contrataciones || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'contrataciones', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Cuentas Médicas *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).cuentasMedicas || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'cuentasMedicas', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Cuentas Paciente *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).cuentasPaciente || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'cuentasPaciente', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Referencias y Autorizaciones *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).referenciasAutorizaciones || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'referenciasAutorizaciones', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Autorizador *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).autorizador || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'autorizador', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Via ERP Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">Via ERP</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Farmacia *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).farmacia || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'farmacia', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Proveedores *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).proveedores || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'proveedores', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Administración de Recursos *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).administracionRecursos || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'administracionRecursos', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Activos Fijos *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).activosFijos || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'activosFijos', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Centros de Costo *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).centrosCosto || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'centrosCosto', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Administración de Infraestructura *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).administracionInfraestructura || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'administracionInfraestructura', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Almacén General *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).almacenGeneral || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'almacenGeneral', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Mantenimiento Físico *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).mantenimientoFisico || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'mantenimientoFisico', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* General Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">General</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Multi Empresa o Empresas *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).multiEmpresa || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'multiEmpresa', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Multi Sede por Sede *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).multiSede || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'multiSede', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Índice Cloud (Búsqueda, imágenes y más) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).indiceCloud || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'indiceCloud', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Lanzador de ecosistemas de Go-Ver *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).lanzadorEcosistemas || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'lanzadorEcosistemas', e.target.value)}
+          />
+        </div>
+      </div>
       
       <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">VIE Finance</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1078,6 +1506,66 @@ const FormularioClinicoGamificado = () => {
             <option value="1">Activo</option>
             <option value="0">Inactivo</option>
           </select>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Recortabilidad 24 horas antes (Whattimes) *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).recortabilidad24h || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'recortabilidad24h', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Número EMPLEADOS *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).numeroEmpleados || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'numeroEmpleados', e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">99% en 401 *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).porcentaje401 || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'porcentaje401', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* Índice Electrónico Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">Índice Electrónico</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Número electrónico *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).numeroElectronico || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'numeroElectronico', e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* IndiGO Storage Section */}
+      <h3 className="text-lg font-semibold text-foreground mt-6 mb-4">IndiGO Storage</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-foreground mb-1">Texto de almacenamiento *</label>
+          <input
+            type="text"
+            required
+            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-warning"
+            value={(formData.capacidadInstalada as any).textoAlmacenamiento || ''}
+            onChange={(e) => handleInputChange('capacidadInstalada', 'textoAlmacenamiento', e.target.value)}
+          />
         </div>
       </div>
     </div>
