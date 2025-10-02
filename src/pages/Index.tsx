@@ -990,7 +990,7 @@ const FormularioClinicoGamificado = () => {
           <div className="flex justify-between items-center mb-4">
             <div>
               <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Formulario de Registro Clínico
+                Formulario de Registro
               </h1>
               {user && (
                 <p className="text-sm text-muted-foreground mt-1">
