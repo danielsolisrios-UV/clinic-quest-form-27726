@@ -3,7 +3,7 @@ import { ChevronRight, ChevronLeft, Award, Download, CheckCircle, Building2, Map
 import { departamentos, municipiosPorDepartamento } from '@/data/colombiaData';
 import { toast } from 'sonner';
 import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import {
   AlertDialog,
