@@ -1,1 +1,4 @@
 project_id = "cmpxsougcijecwhmnzpd"
+
+[functions.search-nit]
+verify_jwt = false

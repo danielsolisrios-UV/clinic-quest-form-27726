@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Award, Download, CheckCircle, Building2, MapPin, Stethoscope, Activity, Star, Trophy, Lock, Save, LogOut, Loader2 } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Award, Download, CheckCircle, Building2, MapPin, Stethoscope, Activity, Star, Trophy, Lock, Save, LogOut, Loader2, Search } from 'lucide-react';
 import { departamentos, municipiosPorDepartamento } from '@/data/colombiaData';
 import { toast } from 'sonner';
 import { useAuth } from '@/hooks/useAuth';
@@ -137,6 +137,7 @@ const FormularioClinicoGamificado = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [saveTimeout, setSaveTimeout] = useState<NodeJS.Timeout | null>(null);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [isSearchingNit, setIsSearchingNit] = useState(false);
 
   // Validación y formato de campos numéricos
   const validateNumericField = (value: string, fieldType: 'integer' | 'phone' | 'nit'): { isValid: boolean; error?: string } => {
@@ -234,6 +235,43 @@ const FormularioClinicoGamificado = () => {
 
     // Actualizar el formulario
     handleInputChange(section, field, formattedValue);
+  };
+
+  // Función para buscar el NIT automáticamente
+  const searchNit = async () => {
+    const razonSocial = (formData.informacionGeneral as any).razonSocial;
+    
+    if (!razonSocial || razonSocial.trim() === '') {
+      toast.error('Por favor, ingrese la Razón Social primero');
+      return;
+    }
+
+    setIsSearchingNit(true);
+    try {
+      console.log('Buscando NIT para:', razonSocial);
+      
+      const { data, error } = await supabase.functions.invoke('search-nit', {
+        body: { companyName: razonSocial }
+      });
+
+      if (error) {
+        console.error('Error al buscar NIT:', error);
+        toast.error('Error al buscar el NIT. Por favor, intente nuevamente.');
+        return;
+      }
+
+      if (data.nit) {
+        handleInputChange('informacionGeneral', 'nit', data.nit);
+        toast.success(`NIT encontrado: ${data.nit}`);
+      } else {
+        toast.error(data.error || 'No se encontró el NIT en los resultados de búsqueda');
+      }
+    } catch (error) {
+      console.error('Error en la búsqueda de NIT:', error);
+      toast.error('Error al conectar con el servicio de búsqueda');
+    } finally {
+      setIsSearchingNit(false);
+    }
   };
 
   const sections = [
@@ -625,12 +663,28 @@ const FormularioClinicoGamificado = () => {
           </div>
         <div className="md:col-span-2">
           <label className="block text-sm font-medium text-foreground mb-1">Razón Social *</label>
-          <input
-            type="text"
-            className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary"
-            value={(formData.informacionGeneral as any).razonSocial || ''}
-            onChange={(e) => handleInputChange('informacionGeneral', 'razonSocial', e.target.value)}
-          />
+          <div className="flex gap-2">
+            <input
+              type="text"
+              className="flex-1 px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary"
+              value={(formData.informacionGeneral as any).razonSocial || ''}
+              onChange={(e) => handleInputChange('informacionGeneral', 'razonSocial', e.target.value)}
+              placeholder="Ingrese la razón social"
+            />
+            <button
+              type="button"
+              onClick={searchNit}
+              disabled={isSearchingNit || !(formData.informacionGeneral as any).razonSocial}
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              title="Buscar NIT automáticamente"
+            >
+              {isSearchingNit ? (
+                <Loader2 className="h-5 w-5 animate-spin" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
+            </button>
+          </div>
         </div>
         <div>
           <label className="block text-sm font-medium text-foreground mb-1">Nombre Gerente</label>
