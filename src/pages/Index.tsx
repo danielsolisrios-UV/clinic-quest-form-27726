@@ -319,8 +319,11 @@ const FormularioClinicoGamificado = () => {
   // Función para cargar datos desde JSON
   const loadDataFromJson = async (nit: string) => {
     try {
-      // Intentar cargar el archivo JSON correspondiente
-      const response = await fetch(`/src/data/${nit}_sedes.json`);
+      // El NIT puede tener 10 dígitos (con verificación), intentar con los primeros 9
+      const nitBase = nit.substring(0, 9);
+      
+      // Intentar cargar el archivo JSON correspondiente desde public/data
+      const response = await fetch(`/data/${nitBase}_sedes.json`);
       
       if (!response.ok) {
         // El archivo no existe, no hacer nada
