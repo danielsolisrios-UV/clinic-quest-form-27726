@@ -1,0 +1,260 @@
+{
+    "metadata": {
+        "fecha_procesamiento": "2025-10-05T00:47:53.599977",
+        "archivo_origen": "890324177_Capacidad.xls",
+        "nit_asociado": "890324177"
+    },
+    "camas": 671,
+    "datos": [
+        {
+            "grupo_capacidad": "AMBULANCIAS",
+            "coca_nombre": "Básica",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "AMBULANCIAS",
+            "coca_nombre": "Básica",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "AMBULANCIAS",
+            "coca_nombre": "Medicalizada",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Pediátrica",
+            "cantidad": 102
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Adultos",
+            "cantidad": 300
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "TPR",
+            "cantidad": 2
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Salud Mental Adulto",
+            "cantidad": 5
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Salud Mental Pediátrico",
+            "cantidad": 2
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Incubadora Intermedia Neonatal",
+            "cantidad": 9
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intermedia Pediátrica",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intermedia Adultos",
+            "cantidad": 47
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Incubadora Intensiva Neonatal",
+            "cantidad": 30
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intensiva Pediátrica",
+            "cantidad": 39
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intensiva Adultos",
+            "cantidad": 78
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Incubadora Básico Neonatal",
+            "cantidad": 2
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intensiva Quemado Adulto",
+            "cantidad": 5
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Atención del Parto",
+            "cantidad": 2
+        },
+        {
+            "grupo_capacidad": "CAMILLAS",
+            "coca_nombre": "Observación Pediátrica",
+            "cantidad": 31
+        },
+        {
+            "grupo_capacidad": "CAMILLAS",
+            "coca_nombre": "Observación Adultos Hombres",
+            "cantidad": 20
+        },
+        {
+            "grupo_capacidad": "CAMILLAS",
+            "coca_nombre": "Observación Adultos Mujeres",
+            "cantidad": 20
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Urgencias",
+            "cantidad": 8
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 247
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Partos",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Procedimientos",
+            "cantidad": 45
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Sala de Cirugía",
+            "cantidad": 12
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Sala de Radioterapia",
+            "cantidad": 5
+        },
+        {
+            "grupo_capacidad": "SILLAS",
+            "coca_nombre": "Sillas de Quimioterapia",
+            "cantidad": 31
+        },
+        {
+            "grupo_capacidad": "SILLAS",
+            "coca_nombre": "Sillas de Hemodiálisis",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "SILLAS",
+            "coca_nombre": "Ambiente de transición urgencias",
+            "cantidad": 15
+        },
+        {
+            "grupo_capacidad": "UNIDAD MOVIL",
+            "coca_nombre": "Unidad Móvil",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "UNIDAD MOVIL",
+            "coca_nombre": "Unidad Móvil",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "UNIDAD MOVIL",
+            "coca_nombre": "Unidad Móvil",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 19
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Procedimientos",
+            "cantidad": 6
+        },
+        {
+            "grupo_capacidad": "SILLAS",
+            "coca_nombre": "Sillas de Quimioterapia",
+            "cantidad": 11
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Adultos",
+            "cantidad": 23
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intermedia Adultos",
+            "cantidad": 2
+        },
+        {
+            "grupo_capacidad": "CAMAS",
+            "coca_nombre": "Intensiva Adultos",
+            "cantidad": 22
+        },
+        {
+            "grupo_capacidad": "CAMILLAS",
+            "coca_nombre": "Observación Adultos Hombres",
+            "cantidad": 20
+        },
+        {
+            "grupo_capacidad": "CAMILLAS",
+            "coca_nombre": "Observación Adultos Mujeres",
+            "cantidad": 26
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Urgencias",
+            "cantidad": 3
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 15
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Procedimientos",
+            "cantidad": 4
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Sala de Cirugía",
+            "cantidad": 9
+        },
+        {
+            "grupo_capacidad": "SILLAS",
+            "coca_nombre": "Sillas de Quimioterapia",
+            "cantidad": 21
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 40
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Procedimientos",
+            "cantidad": 3
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 4
+        },
+        {
+            "grupo_capacidad": "CONSULTORIOS",
+            "coca_nombre": "Consulta Externa",
+            "cantidad": 1
+        },
+        {
+            "grupo_capacidad": "SALAS",
+            "coca_nombre": "Procedimientos",
+            "cantidad": 1
+        }
+    ]
+}

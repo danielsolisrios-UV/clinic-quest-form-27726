@@ -1,0 +1,1409 @@
+{
+    "metadata": {
+        "fecha_procesamiento": "2025-10-05T00:47:53.573273",
+        "archivo_origen": "890324177_Servicios.xls",
+        "nit_asociado": "890324177"
+    },
+    "datos": [
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "QUIMIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "RADIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TOMA DE MUESTRAS DE LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "SERVICIO FARMACÉUTICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA NUCLEAR",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "LABORATORIO CITOLOGÍAS CERVICO-UTERINAS",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TERAPIA OCUPACIONAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TERAPIA RESPIRATORIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "LABORATORIO DE HISTOTECNOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "FISIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "FONOAUDIOLOGÍA Y/O TERAPIA DEL LENGUAJE",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "DIAGNÓSTICO VASCULAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HEMODINAMIA E INTERVENCIONISMO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - IONIZANTES",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - NO IONIZANTES",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GESTION PRE-TRANSFUSIONAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "PATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TOMA DE MUESTRAS DE CUELLO UTERINO Y GINECOLÓGICAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "TOMA DE MUESTRAS DE CUELLO UTERINO Y GINECOLÓGICAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - NO IONIZANTES",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - IONIZANTES",
+            "ambulatorio": "."
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "DIAGNÓSTICO VASCULAR",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "FONOAUDIOLOGÍA Y/O TERAPIA DEL LENGUAJE",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "SERVICIO FARMACÉUTICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "TOMA DE MUESTRAS DE LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "QUIMIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "FONOAUDIOLOGÍA Y/O TERAPIA DEL LENGUAJE",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "PATOLOGÍA",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "GESTION PRE-TRANSFUSIONAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - NO IONIZANTES",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - IONIZANTES",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "TERAPIA RESPIRATORIA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "SERVICIO FARMACÉUTICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "TOMA DE MUESTRAS DE LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "QUIMIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - NO IONIZANTES",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "DIAGNÓSTICO VASCULAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HEMODIÁLISIS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "FISIOTERAPIA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "TERAPIA OCUPACIONAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "TERAPIA OCUPACIONAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "TOMA DE MUESTRAS DE CUELLO UTERINO Y GINECOLÓGICAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "DIÁLISIS PERITONEAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "FONOAUDIOLOGÍA Y/O TERAPIA DEL LENGUAJE",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "FISIOTERAPIA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "TOMA DE MUESTRAS DE LABORATORIO CLÍNICO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "URGENCIAS",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ATENCIÓN DEL PARTO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "URGENCIAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TRANSPORTE ASISTENCIAL BASICO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "TRANSPORTE ASISTENCIAL MEDICALIZADO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "NEFROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "MEDICINA FÍSICA Y DEL DEPORTE",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "DERMATOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA FÍSICA Y DEL DEPORTE",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "DERMATOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "ENDOCRINOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE MAMA Y TUMORES TEJIDOS BLANDOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "UROLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "VACUNACIÓN",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA MAXILOFACIAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ORAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "RADIOTERAPIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA DEL TRABAJO Y MEDICINA LABORAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HEMATOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ODONTOPEDIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ORTOPEDIA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ONCOLOGÍA Y HEMATOLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUROPEDIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUROCIRUGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUMOLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEONATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEFROLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA NUCLEAR",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GINECOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "COLOPROCTOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA VASCULAR",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PLÁSTICA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PLÁSTICA Y ESTÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GINECOLÓGICA LAPAROSCÓPICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GASTROINTESTINAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE TÓRAX",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DERMATOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE MANO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE CABEZA Y CUELLO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CARDIOLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "OTRAS CONSULTAS DE ESPECIALIDAD",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "UROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "REUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "OTRAS CONSULTAS DE ESPECIALIDAD",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "UROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "REUMATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "PSIQUIATRÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "PEDIATRÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "OTORRINOLARINGOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "ORTOPEDIA Y/O TRAUMATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "OPTOMETRÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "OFTALMOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "NUTRICIÓN Y DIETÉTICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "NEUROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "NEUMOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "MEDICINA INTERNA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "MEDICINA FÍSICA Y REHABILITACIÓN",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "MEDICINA FAMILIAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "GINECOBSTETRICIA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "GERIATRÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "GENÉTICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "DOLOR Y CUIDADOS PALIATIVOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "DERMATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "CARDIOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ORTOPEDIA PEDIÁTRICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "CIRUGÍA DE MANO",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "NEUROCIRUGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "COLOPROCTOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "REUMATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "MEDICINA FAMILIAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "DOLOR Y CUIDADOS PALIATIVOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "CIRUGÍA PLÁSTICA Y ESTÉTICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "CIRUGÍA VASCULAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "NEUROCIRUGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "MEDICINA DEL TRABAJO Y MEDICINA LABORAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "COLOPROCTOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NEFROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "NEUROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "INFECTOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "ENDOCRINOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "MEDICINA INTERNA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "ENFERMERÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "OTRAS CONSULTAS DE ESPECIALIDAD",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "ENDOCRINOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "serv_nombre": "GASTROENTEROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "HEMATOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NEUMOLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NEFROLOGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "GINECOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "CIRUGÍA PLÁSTICA Y ESTÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "OTRAS CONSULTAS DE ESPECIALIDAD",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "UROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "REUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "PSIQUIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "PEDIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "OTORRINOLARINGOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "ORTOPEDIA Y/O TRAUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "ONCOLOGÍA CLÍNICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NUTRICIÓN Y DIETÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NEUROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "NEUMOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "MEDICINA INTERNA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "MEDICINA FÍSICA Y REHABILITACIÓN",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "INFECTOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "HEMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "GINECOBSTETRICIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "GASTROENTEROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "DERMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "CIRUGÍA GENERAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "CARDIOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "serv_nombre": "ANESTESIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "HEMATOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "ORTOPEDIA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "GINECOLOGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "ONCOLOGÍA CLÍNICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "NUTRICIÓN Y DIETÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "NEUMOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "GASTROENTEROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "DERMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA GENERAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CARDIOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "ANESTESIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ONCOLOGÍA CLÍNICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "OFTALMOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NUTRICIÓN Y DIETÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUMOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEFROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA INTERNA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA FÍSICA Y REHABILITACIÓN",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "MEDICINA FAMILIAR",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "INFECTOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HEMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GINECOBSTETRICIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GERIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GENÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "GASTROENTEROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ENFERMERÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ENDOCRINOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "DOLOR Y CUIDADOS PALIATIVOS",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "DERMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GENERAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA CARDIOVASCULAR",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CARDIOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ANESTESIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "OPTOMETRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "ORTOPEDIA Y/O TRAUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "OTORRINOLARINGOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "PEDIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "PSIQUIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "REHABILITACIÓN ORAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTERMEDIO NEONATAL",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTERMEDIO PEDIÁTRICO",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTERMEDIO ADULTOS",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTENSIVO NEONATAL",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTENSIVO PEDIÁTRICO",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO INTENSIVO ADULTOS",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CUIDADO BÁSICO NEONATAL",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HOSPITALIZACIÓN ADULTOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HOSPITALIZACIÓN PEDIÁTRICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "HOSPITALIZACIÓN EN SALUD MENTAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "HOSPITALIZACIÓN ADULTOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CUIDADO INTENSIVO ADULTOS",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CUIDADO INTERMEDIO ADULTOS",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "NEUROCIRUGÍA",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA PLÁSTICA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA GASTROINTESTINAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA DE TÓRAX",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA OFTALMOLÓGICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA DE LA MANO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA UROLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA VASCULAR Y ANGIOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA PLÁSTICA Y ESTÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA OTORRINOLARINGOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA ORTOPÉDICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA GENERAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA DE CABEZA Y CUELLO",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE MAMA Y TUMORES TEJIDOS BLANDOS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PLÁSTICA Y ESTÉTICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PEDIÁTRICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ORAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA OTORRINOLARINGOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA OFTALMOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ORTOPÉDICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA MAXILOFACIAL",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GINECOLÓGICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GENERAL",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA CARDIOVASCULAR",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE CABEZA Y CUELLO",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "OTRAS CIRUGÍAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA GINECOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "serv_nombre": "CIRUGÍA MAXILOFACIAL",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA VASCULAR Y ANGIOLÓGICA",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA UROLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "OTRAS CIRUGÍAS",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA ONCOLÓGICA PEDIÁTRICA",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE LA MANO",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DERMATOLÓGICA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA DE TÓRAX",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA GASTROINTESTINAL",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "CIRUGÍA PLÁSTICA ONCOLÓGICA",
+            "ambulatorio": "NO"
+        },
+        {
+            "sede_nombre": "FUNDACION VALLE DEL LILI",
+            "serv_nombre": "NEUROCIRUGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "TOMA DE MUESTRAS DE LABORATORIO CLÍNICO",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "DIAGNÓSTICO VASCULAR",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "IMÁGENES DIAGNOSTICAS - NO IONIZANTES",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "TOMA DE MUESTRAS DE CUELLO UTERINO Y GINECOLÓGICAS",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "FONOAUDIOLOGÍA Y/O TERAPIA DEL LENGUAJE",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "GINECOBSTETRICIA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "MEDICINA FÍSICA Y REHABILITACIÓN",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "MEDICINA INTERNA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "ORTOPEDIA Y/O TRAUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "PEDIATRÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "PSIQUIATRÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "REUMATOLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "UROLOGÍA",
+            "ambulatorio": "SI"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "NUTRICIÓN Y DIETÉTICA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "PSICOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "GASTROENTEROLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "DERMATOLOGÍA",
+            "ambulatorio": "SD"
+        },
+        {
+            "sede_nombre": "Fundación Valle del Lili - Sede Alfaguara",
+            "serv_nombre": "CARDIOLOGÍA",
+            "ambulatorio": "SI"
+        }
+    ]
+}
