@@ -1,0 +1,52 @@
+{
+    "metadata": {
+        "fecha_procesamiento": "2025-10-05T00:47:53.375022",
+        "archivo_origen": "890324177_Sedes.xls",
+        "nit_asociado": "890324177"
+    },
+    "numero_de_sedes": 6,
+    "datos": [
+        {
+            "departamento": "Cali",
+            "municipio": "CALI",
+            "nombre_de_la_sede": "FUNDACION VALLE DEL LILI",
+            "direccion": "KR 98 # 18-49",
+            "gerente": "ALVARO QUINTERO CASTAÑO"
+        },
+        {
+            "departamento": "Cali",
+            "municipio": "CALI",
+            "nombre_de_la_sede": "FUNDACIÓN VALLE DEL LILI SEDE AVENIDA LA ESTACIÓN",
+            "direccion": "Calle 23 DN # 4N-21",
+            "gerente": "ALVARO QUINTERO CASTAÑO"
+        },
+        {
+            "departamento": "Cali",
+            "municipio": "CALI",
+            "nombre_de_la_sede": "FUNDACIÓN VALLE DEL LILI SEDE LIMONAR",
+            "direccion": "CARRERA 70 # 18-75 ESQUINA",
+            "gerente": "ALVARO QUINTERO CASTAÑO"
+        },
+        {
+            "departamento": "Cali",
+            "municipio": "CALI",
+            "nombre_de_la_sede": "FUNDACION VALLE DEL LILI - SEDE TEQUENDAMA",
+            "direccion": "CRA 41 No 5B-08 con Carrera 41 # 5b-20",
+            "gerente": "Alvaro Quintero Castaño"
+        },
+        {
+            "departamento": "Valle del cauca",
+            "municipio": "JAMUNDÍ",
+            "nombre_de_la_sede": "Fundación Valle del Lili - Sede Alfaguara",
+            "direccion": "CALLE 2 N° 22-75 LOCAL 1-36",
+            "gerente": "Alvaro Quintero Castaño"
+        },
+        {
+            "departamento": "Valle del cauca",
+            "municipio": "JAMUNDÍ",
+            "nombre_de_la_sede": "Fundación Valle del Lili - Sede Alfaguara",
+            "direccion": "CALLE 2 N° 22-75 LOCAL 1-38, 1-39, 1-40, 1-41",
+            "gerente": "Alvaro Quintero Castaño"
+        }
+    ]
+}
