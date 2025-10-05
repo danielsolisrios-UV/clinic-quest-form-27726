@@ -149,36 +149,32 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center">
             <img 
               src={indigoLogo} 
               alt="IndiGO Logo" 
-              className="h-32 w-auto object-contain drop-shadow-lg animate-float"
+              className="h-40 w-auto object-contain drop-shadow-2xl animate-float"
             />
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            IndiGO
-          </h1>
-          <p className="text-muted-foreground">Sistema de Formularios Clínicos</p>
         </div>
 
         <Tabs defaultValue="login" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Iniciar Sesión</TabsTrigger>
-            <TabsTrigger value="signup">Registrarse</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 bg-indigo-100/50 border border-indigo-200">
+            <TabsTrigger value="login" className="data-[state=active]:bg-indigo-600 data-[state=active]:text-white">Iniciar Sesión</TabsTrigger>
+            <TabsTrigger value="signup" className="data-[state=active]:bg-indigo-600 data-[state=active]:text-white">Registrarse</TabsTrigger>
           </TabsList>
 
           <TabsContent value="login">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <LogIn className="w-5 h-5" />
+            <Card className="border-indigo-200 shadow-lg shadow-indigo-100/50">
+              <CardHeader className="bg-gradient-to-r from-indigo-50 to-transparent">
+                <CardTitle className="flex items-center gap-2 text-indigo-900">
+                  <LogIn className="w-5 h-5 text-indigo-600" />
                   Iniciar Sesión
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-indigo-600">
                   Ingresa tus credenciales para acceder al formulario
                 </CardDescription>
               </CardHeader>
@@ -187,12 +183,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="login-email">Correo Electrónico</Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="login-email"
                         type="email"
                         placeholder="tu@correo.com"
-                        className="pl-10"
+                        className="pl-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={loginData.email}
                         onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                         disabled={isLoading}
@@ -204,12 +200,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="login-password">Contraseña</Label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="login-password"
                         type={showLoginPassword ? "text" : "password"}
                         placeholder="••••••••"
-                        className="pl-10 pr-10"
+                        className="pl-10 pr-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={loginData.password}
                         onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                         disabled={isLoading}
@@ -217,7 +213,7 @@ const Auth = () => {
                       <button
                         type="button"
                         onClick={() => setShowLoginPassword(!showLoginPassword)}
-                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-3 text-indigo-400 hover:text-indigo-600 transition-colors"
                         disabled={isLoading}
                       >
                         {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -226,7 +222,7 @@ const Auth = () => {
                     {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-200" disabled={isLoading}>
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -245,13 +241,13 @@ const Auth = () => {
           </TabsContent>
 
           <TabsContent value="signup">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <UserPlus className="w-5 h-5" />
+            <Card className="border-indigo-200 shadow-lg shadow-indigo-100/50">
+              <CardHeader className="bg-gradient-to-r from-indigo-50 to-transparent">
+                <CardTitle className="flex items-center gap-2 text-indigo-900">
+                  <UserPlus className="w-5 h-5 text-indigo-600" />
                   Crear Cuenta
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-indigo-600">
                   Regístrate para comenzar a llenar el formulario
                 </CardDescription>
               </CardHeader>
@@ -260,12 +256,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="signup-name">Nombre Completo</Label>
                     <div className="relative">
-                      <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <User className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="signup-name"
                         type="text"
                         placeholder="Juan Pérez"
-                        className="pl-10"
+                        className="pl-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={signUpData.nombreCompleto}
                         onChange={(e) => setSignUpData({ ...signUpData, nombreCompleto: e.target.value })}
                         disabled={isLoading}
@@ -277,12 +273,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="signup-email">Correo Electrónico</Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="signup-email"
                         type="email"
                         placeholder="tu@correo.com"
-                        className="pl-10"
+                        className="pl-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={signUpData.email}
                         onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })}
                         disabled={isLoading}
@@ -294,12 +290,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="signup-password">Contraseña</Label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="signup-password"
                         type={showSignupPassword ? "text" : "password"}
                         placeholder="Mínimo 8 caracteres"
-                        className="pl-10 pr-10"
+                        className="pl-10 pr-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={signUpData.password}
                         onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
                         disabled={isLoading}
@@ -307,7 +303,7 @@ const Auth = () => {
                       <button
                         type="button"
                         onClick={() => setShowSignupPassword(!showSignupPassword)}
-                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-3 text-indigo-400 hover:text-indigo-600 transition-colors"
                         disabled={isLoading}
                       >
                         {showSignupPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -319,12 +315,12 @@ const Auth = () => {
                   <div className="space-y-2">
                     <Label htmlFor="signup-confirm">Confirmar Contraseña</Label>
                     <div className="relative">
-                      <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Lock className="absolute left-3 top-3 h-4 w-4 text-indigo-500" />
                       <Input
                         id="signup-confirm"
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="Repite tu contraseña"
-                        className="pl-10 pr-10"
+                        className="pl-10 pr-10 border-indigo-200 focus:border-indigo-500 focus:ring-indigo-500"
                         value={signUpData.confirmPassword}
                         onChange={(e) => setSignUpData({ ...signUpData, confirmPassword: e.target.value })}
                         disabled={isLoading}
@@ -332,7 +328,7 @@ const Auth = () => {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"
+                        className="absolute right-3 top-3 text-indigo-400 hover:text-indigo-600 transition-colors"
                         disabled={isLoading}
                       >
                         {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -341,7 +337,7 @@ const Auth = () => {
                     {errors.confirmPassword && <p className="text-sm text-destructive">{errors.confirmPassword}</p>}
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-200" disabled={isLoading}>
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
