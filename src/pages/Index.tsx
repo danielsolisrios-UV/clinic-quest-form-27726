@@ -239,17 +239,30 @@ const FormularioClinicoGamificado = () => {
 
   // Función para buscar el NIT automáticamente y autocompletar desde JSON
   const searchNit = async () => {
+    const nitValue = (formData.informacionGeneral as any).nit;
     const razonSocial = (formData.informacionGeneral as any).razonSocial;
-    
-    if (!razonSocial || razonSocial.trim() === '') {
-      toast.error('Por favor, ingrese la Razón Social primero');
+
+    if ((!nitValue || nitValue.trim() === '') && (!razonSocial || razonSocial.trim() === '')) {
+      toast.error('Ingrese NIT o Razón Social para buscar');
       return;
     }
 
     setIsSearchingNit(true);
     try {
+      // 1) Si ya hay NIT ingresado, usarlo directamente para cargar los JSON
+      if (nitValue && nitValue.trim() !== '') {
+        const cleanNit = nitValue.replace(/[^\d]/g, '');
+        if (cleanNit.length < 9) {
+          toast.error('El NIT debe tener al menos 9 dígitos');
+          return;
+        }
+        await loadDataFromJson(cleanNit);
+        toast.success(`Datos cargados para NIT: ${cleanNit}`);
+        return;
+      }
+
+      // 2) Si no hay NIT, intentar resolverlo por Razón Social vía función backend
       console.log('Buscando NIT para:', razonSocial);
-      
       const { data, error } = await supabase.functions.invoke('search-nit', {
         body: { companyName: razonSocial }
       });
@@ -260,14 +273,12 @@ const FormularioClinicoGamificado = () => {
         return;
       }
 
-      if (data.nit) {
+      if (data?.nit) {
         handleInputChange('informacionGeneral', 'nit', data.nit);
         toast.success(`NIT encontrado: ${data.nit}`);
-        
-        // Intentar cargar datos desde JSON
         await loadDataFromJson(data.nit);
       } else {
-        toast.error(data.error || 'No se encontró el NIT en los resultados de búsqueda');
+        toast.error(data?.error || 'No se encontró el NIT en los resultados de búsqueda');
       }
     } catch (error) {
       console.error('Error en la búsqueda de NIT:', error);
@@ -523,6 +534,8 @@ const FormularioClinicoGamificado = () => {
             toast.success('Datos de capacidad instalada cargados correctamente');
           }
         }
+      } else {
+        toast.error('No se encontró información de capacidad instalada para este NIT');
       }
     } catch (error) {
       console.error('Error al cargar datos desde JSON:', error);
