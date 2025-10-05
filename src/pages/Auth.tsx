@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { Lock, Mail, User, LogIn, UserPlus, Loader2, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
+import indigoLogo from '/Indigo.png';
 
 // Validation schemas
 const signUpSchema = z.object({
@@ -151,6 +152,13 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
+          <div className="flex justify-center mb-6">
+            <img 
+              src={indigoLogo} 
+              alt="IndiGO Logo" 
+              className="h-32 w-auto object-contain drop-shadow-lg animate-float"
+            />
+          </div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
             IndiGO
           </h1>
