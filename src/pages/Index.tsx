@@ -364,6 +364,27 @@ const FormularioClinicoGamificado = () => {
     }
   }, [user]);
 
+  // Auto-adjust sedes array based on numeroSedes input
+  useEffect(() => {
+    const numeroSedes = parseInt((formData.informacionGeneral as any).numeroSedes || '0');
+    
+    if (numeroSedes > 0 && formData.sedes.length !== numeroSedes) {
+      const newSedes = [...formData.sedes];
+      
+      // Add sedes if needed
+      while (newSedes.length < numeroSedes) {
+        newSedes.push({});
+      }
+      
+      // Remove sedes if needed (keeping data from existing ones)
+      if (newSedes.length > numeroSedes) {
+        newSedes.splice(numeroSedes);
+      }
+      
+      setFormData(prev => ({ ...prev, sedes: newSedes }));
+    }
+  }, [(formData.informacionGeneral as any).numeroSedes]);
+
   // Auto-assign sede name if there's only one sede
   useEffect(() => {
     const sedesConNombre = formData.sedes.filter(sede => sede.nombreSede);
@@ -766,13 +787,22 @@ const FormularioClinicoGamificado = () => {
 
   const renderSedes = () => {
     const numeroSedes = parseInt((formData.informacionGeneral as any).numeroSedes || '0');
-    const canAddMoreSedes = numeroSedes === 0 || formData.sedes.length < numeroSedes;
 
     return (
       <div className="space-y-6">
+        {numeroSedes === 0 && (
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-sm text-foreground">
+            <p>📍 Por favor, especifique el número de sedes en la sección de Información General</p>
+          </div>
+        )}
         {numeroSedes === 1 && (
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-sm text-foreground">
             <p>📍 Solo se permite una sede según la información general</p>
+          </div>
+        )}
+        {numeroSedes > 1 && (
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-sm text-foreground">
+            <p>📍 Se crearon {numeroSedes} campos de sedes automáticamente según la información general</p>
           </div>
         )}
         {formData.sedes.map((sede, index) => {
@@ -957,15 +987,6 @@ const FormularioClinicoGamificado = () => {
             </div>
           );
         })}
-        {canAddMoreSedes && (
-          <button
-            onClick={() => addSedeOrService('sedes')}
-            className="w-full py-2 px-4 bg-secondary/20 text-secondary rounded-lg hover:bg-secondary/30 transition flex items-center justify-center gap-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <MapPin size={20} />
-            Agregar otra sede
-          </button>
-        )}
       </div>
     );
   };
