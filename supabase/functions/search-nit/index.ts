@@ -52,7 +52,7 @@ serve(async (req) => {
     // Pattern: NIT followed by optional colon/period, then digits with optional commas/periods and a dash
     const nitPattern = /NIT\s*[:.]?\s*([\d,\.]+\-\d+)/gi;
     
-    let nitValue = null;
+    let rawNitValue = null;
 
     // Search in organic results
     if (searchResults.organic_results) {
@@ -63,21 +63,21 @@ serve(async (req) => {
           if (match) {
             const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
             if (valueMatch) {
-              nitValue = valueMatch[1];
-              console.log(`Found NIT in snippet: ${nitValue}`);
+              rawNitValue = valueMatch[1];
+              console.log(`Found NIT in snippet: ${rawNitValue}`);
               break;
             }
           }
         }
         
         // Check in title if not found in snippet
-        if (!nitValue && result.title) {
+        if (!rawNitValue && result.title) {
           const match = result.title.match(nitPattern);
           if (match) {
             const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
             if (valueMatch) {
-              nitValue = valueMatch[1];
-              console.log(`Found NIT in title: ${nitValue}`);
+              rawNitValue = valueMatch[1];
+              console.log(`Found NIT in title: ${rawNitValue}`);
               break;
             }
           }
@@ -86,19 +86,19 @@ serve(async (req) => {
     }
 
     // Check answer box if not found in organic results
-    if (!nitValue && searchResults.answer_box) {
+    if (!rawNitValue && searchResults.answer_box) {
       const answerText = JSON.stringify(searchResults.answer_box);
       const match = answerText.match(nitPattern);
       if (match) {
         const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
         if (valueMatch) {
-          nitValue = valueMatch[1];
-          console.log(`Found NIT in answer box: ${nitValue}`);
+          rawNitValue = valueMatch[1];
+          console.log(`Found NIT in answer box: ${rawNitValue}`);
         }
       }
     }
 
-    if (!nitValue) {
+    if (!rawNitValue) {
       console.log('No NIT found in search results');
       return new Response(
         JSON.stringify({ 
@@ -112,12 +112,31 @@ serve(async (req) => {
       );
     }
 
-    console.log(`Successfully extracted NIT: ${nitValue}`);
+    // Clean NIT: remove dots and dashes to get clean number
+    // Example: "890.306-950" becomes "890306950" or "890.306.950-6" becomes "8903069506"
+    const cleanNit = rawNitValue.replace(/[.,\-]/g, '');
+    
+    // Validate NIT has at least 9 digits
+    if (cleanNit.length < 9) {
+      console.log(`NIT too short: ${cleanNit} (${cleanNit.length} digits)`);
+      return new Response(
+        JSON.stringify({ 
+          error: 'El NIT encontrado no tiene al menos 9 dígitos',
+          nit: null 
+        }),
+        { 
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    console.log(`Successfully extracted and cleaned NIT: ${cleanNit} (from ${rawNitValue})`);
 
     return new Response(
       JSON.stringify({ 
         success: true,
-        nit: nitValue,
+        nit: cleanNit,
         companyName: companyName
       }),
       { 
