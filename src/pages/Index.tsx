@@ -316,6 +316,15 @@ const FormularioClinicoGamificado = () => {
     }
   };
 
+  // Función auxiliar para normalizar texto (remover acentos y convertir a minúsculas)
+  const normalizeText = (text: string): string => {
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+  };
+
   // Función para cargar datos desde JSON
   const loadDataFromJson = async (nit: string) => {
     try {
@@ -388,6 +397,131 @@ const FormularioClinicoGamificado = () => {
           }));
 
           toast.success('Datos de servicios habilitados cargados correctamente');
+        }
+      }
+
+      // Intentar cargar el archivo JSON de capacidad instalada
+      const capacidadResponse = await fetch(`/data/${nitBase}_CapacidadInstalada.json`);
+      
+      if (capacidadResponse.ok) {
+        const capacidadJsonData = await capacidadResponse.json();
+        
+        if (capacidadJsonData.datos && Array.isArray(capacidadJsonData.datos)) {
+          // Objeto para almacenar las cantidades mapeadas
+          const capacidadMapeada: any = {};
+
+          // Función auxiliar para buscar y sumar cantidades
+          const sumCantidades = (grupoCapacidad: string, cocaNombreMatch: string | string[]): number => {
+            const matches = capacidadJsonData.datos.filter((item: any) => {
+              const grupoNormalizado = normalizeText(item.grupo_capacidad || '');
+              const cocaNormalizado = normalizeText(item.coca_nombre || '');
+              
+              if (grupoNormalizado !== normalizeText(grupoCapacidad)) {
+                return false;
+              }
+
+              if (Array.isArray(cocaNombreMatch)) {
+                // Si cocaNombreMatch es un array, buscar si alguno coincide
+                return cocaNombreMatch.some(match => 
+                  cocaNormalizado.includes(normalizeText(match)) || 
+                  normalizeText(match).includes(cocaNormalizado)
+                );
+              } else {
+                // Si es un string, buscar coincidencia parcial
+                return cocaNormalizado.includes(normalizeText(cocaNombreMatch)) || 
+                       normalizeText(cocaNombreMatch).includes(cocaNormalizado);
+              }
+            });
+
+            return matches.reduce((sum: number, item: any) => sum + (parseInt(item.cantidad) || 0), 0);
+          };
+
+          // VIE Hospital - Mapeo
+          // Consultorios (Urgencias + Externa)
+          const consultoriosUrgencias = sumCantidades('CONSULTORIOS', 'Urgencias');
+          const consultoriosExterna = sumCantidades('CONSULTORIOS', 'Consulta Externa');
+          if (consultoriosUrgencias + consultoriosExterna > 0) {
+            capacidadMapeada.consultorios = (consultoriosUrgencias + consultoriosExterna).toString();
+          }
+
+          // Consultorios RIAS General
+          if (consultoriosExterna > 0) {
+            capacidadMapeada.consultoriosRias = consultoriosExterna.toString();
+          }
+
+          // Camas de Observación/Urgencias
+          const camasObservacion = sumCantidades('CAMILLAS', ['Observacion', 'Observación']);
+          if (camasObservacion > 0) {
+            capacidadMapeada.camasObservacion = camasObservacion.toString();
+          }
+
+          // Camas Hospitalización (Adultos + Pediátrica)
+          const camasHospitalizacion = sumCantidades('CAMAS', ['Adultos', 'Pediatrica', 'Pediátrica']);
+          if (camasHospitalizacion > 0) {
+            capacidadMapeada.camasHospitalizacion = camasHospitalizacion.toString();
+          }
+
+          // Camas UCI (todas las intensivas)
+          const camasUci = sumCantidades('CAMAS', ['Intensiva', 'Intensivo']);
+          if (camasUci > 0) {
+            capacidadMapeada.camasUci = camasUci.toString();
+          }
+
+          // Salas de Cirugía
+          const salasCirugia = sumCantidades('SALAS', 'Cirugia');
+          if (salasCirugia > 0) {
+            capacidadMapeada.salasCirugia = salasCirugia.toString();
+          }
+
+          // Via EHR - Mapeo adicional
+          // Ambulancias
+          const ambulancias = sumCantidades('AMBULANCIAS', ['Basica', 'Básica', 'Medicalizada']);
+          if (ambulancias > 0) {
+            capacidadMapeada.ambulancias = ambulancias.toString();
+          }
+
+          // Consulta Externa (Medicina General) - usar el total de consulta externa
+          if (consultoriosExterna > 0) {
+            capacidadMapeada.consultaExternaMedicinaGeneral = consultoriosExterna.toString();
+          }
+
+          // Camas de Cuidado Intermedio e Intensivo
+          const camasCuidadoIntermedio = sumCantidades('CAMAS', ['Intermedia', 'Intensiva', 'Intensivo']);
+          if (camasCuidadoIntermedio > 0) {
+            capacidadMapeada.camasCuidadoIntermedioIntensivo = camasCuidadoIntermedio.toString();
+          }
+
+          // Obstetricia/Neonatología
+          const neonatologia = sumCantidades('CAMAS', ['Neonatal', 'Incubadora']);
+          if (neonatologia > 0) {
+            capacidadMapeada.obstetricianNeonatologia = neonatologia.toString();
+            capacidadMapeada.neonatologiaSaludMujer = neonatologia.toString();
+          }
+
+          // Sala de Parto
+          const salaParto = sumCantidades('SALAS', 'Parto');
+          if (salaParto > 0) {
+            capacidadMapeada.salaPartoRecuperacion = salaParto.toString();
+          }
+
+          // Obstetricia/Parto - Camas de Atención del Parto
+          const camasParto = sumCantidades('CAMAS', ['Atencion del Parto', 'Atención del Parto']);
+          if (camasParto > 0) {
+            capacidadMapeada.obstetriciaParto = camasParto.toString();
+          }
+
+          // Actualizar el formulario con los datos de capacidad instalada
+          if (Object.keys(capacidadMapeada).length > 0) {
+            setFormData(prev => ({
+              ...prev,
+              capacidadInstalada: {
+                ...prev.capacidadInstalada,
+                ...capacidadMapeada
+              }
+            }));
+
+            toast.success('Datos de capacidad instalada cargados correctamente');
+          }
         }
       }
     } catch (error) {
