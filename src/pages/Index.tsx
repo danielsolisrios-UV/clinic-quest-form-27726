@@ -237,7 +237,7 @@ const FormularioClinicoGamificado = () => {
     handleInputChange(section, field, formattedValue);
   };
 
-  // Función para buscar el NIT automáticamente
+  // Función para buscar el NIT automáticamente y autocompletar desde JSON
   const searchNit = async () => {
     const razonSocial = (formData.informacionGeneral as any).razonSocial;
     
@@ -263,6 +263,9 @@ const FormularioClinicoGamificado = () => {
       if (data.nit) {
         handleInputChange('informacionGeneral', 'nit', data.nit);
         toast.success(`NIT encontrado: ${data.nit}`);
+        
+        // Intentar cargar datos desde JSON
+        await loadDataFromJson(data.nit);
       } else {
         toast.error(data.error || 'No se encontró el NIT en los resultados de búsqueda');
       }
@@ -271,6 +274,96 @@ const FormularioClinicoGamificado = () => {
       toast.error('Error al conectar con el servicio de búsqueda');
     } finally {
       setIsSearchingNit(false);
+    }
+  };
+
+  // Función para validar y corregir departamento/ciudad
+  const validateAndFixLocation = (departamento: string, ciudad: string): { departamento: string; ciudad: string } => {
+    // Verificar si el departamento existe en la lista de departamentos
+    const departamentoValido = departamentos.find(d => 
+      d.toLowerCase() === departamento.toLowerCase()
+    );
+
+    if (departamentoValido) {
+      // El departamento es válido, verificar que la ciudad pertenezca a este departamento
+      const ciudadesDelDepartamento = municipiosPorDepartamento[departamentoValido] || [];
+      const ciudadValida = ciudadesDelDepartamento.find(c => 
+        c.toLowerCase() === ciudad.toLowerCase()
+      );
+      
+      return {
+        departamento: departamentoValido,
+        ciudad: ciudadValida || ciudad
+      };
+    } else {
+      // El departamento no es válido, buscar en qué departamento está la ciudad
+      for (const [dept, municipios] of Object.entries(municipiosPorDepartamento)) {
+        const ciudadEncontrada = municipios.find(m => 
+          m.toLowerCase() === departamento.toLowerCase() || 
+          m.toLowerCase() === ciudad.toLowerCase()
+        );
+        
+        if (ciudadEncontrada) {
+          return {
+            departamento: dept,
+            ciudad: ciudadEncontrada
+          };
+        }
+      }
+      
+      // Si no se encuentra, retornar los valores originales
+      return { departamento, ciudad };
+    }
+  };
+
+  // Función para cargar datos desde JSON
+  const loadDataFromJson = async (nit: string) => {
+    try {
+      // Intentar cargar el archivo JSON correspondiente
+      const response = await fetch(`/src/data/${nit}_sedes.json`);
+      
+      if (!response.ok) {
+        // El archivo no existe, no hacer nada
+        return;
+      }
+
+      const jsonData = await response.json();
+      
+      if (!jsonData.datos || !Array.isArray(jsonData.datos)) {
+        return;
+      }
+
+      // Autocompletar número de sedes
+      const numeroSedes = jsonData.numero_de_sedes || jsonData.datos.length;
+      handleInputChange('informacionGeneral', 'numeroSedes', numeroSedes.toString());
+
+      // Crear array de sedes con los datos del JSON
+      const sedesData: Sede[] = jsonData.datos.map((sede: any) => {
+        // Validar y corregir departamento/ciudad
+        const { departamento, ciudad } = validateAndFixLocation(
+          sede.departamento || '',
+          sede.municipio || ''
+        );
+
+        return {
+          nombreSede: sede.nombre_de_la_sede || '',
+          departamento: departamento,
+          ciudad: ciudad,
+          direccion: sede.direccion || '',
+          // El campo gerente no existe en la estructura de Sede, pero podríamos agregarlo como nota
+        };
+      });
+
+      // Actualizar el formulario con los datos de las sedes
+      setFormData(prev => ({
+        ...prev,
+        sedes: sedesData
+      }));
+
+      toast.success('Datos cargados correctamente desde el archivo');
+    } catch (error) {
+      console.error('Error al cargar datos desde JSON:', error);
+      // No mostrar error al usuario ya que puede ser normal que no exista el archivo
     }
   };
 
