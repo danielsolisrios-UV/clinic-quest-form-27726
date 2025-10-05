@@ -26,35 +26,79 @@ serve(async (req) => {
 
     console.log(`Searching NIT for company: ${companyName}`);
 
-    // Construct Google search query
-    const searchQuery = `nit ${companyName}`;
-    const encodedQuery = encodeURIComponent(searchQuery);
-    const googleUrl = `https://www.google.com/search?q=${encodedQuery}`;
-
-    console.log(`Google search URL: ${googleUrl}`);
-
-    // Make request to Google
-    const response = await fetch(googleUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8',
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`Google search failed with status: ${response.status}`);
+    // Get SerpApi API key from environment
+    const serpApiKey = Deno.env.get('SERPAPI_API_KEY');
+    if (!serpApiKey) {
+      throw new Error('SERPAPI_API_KEY not configured');
     }
 
-    const htmlText = await response.text();
-    console.log(`Received HTML response (length: ${htmlText.length})`);
+    // Construct SerpApi search query
+    const searchQuery = `nit ${companyName}`;
+    const serpApiUrl = `https://serpapi.com/search.json?q=${encodeURIComponent(searchQuery)}&api_key=${serpApiKey}`;
 
-    // Extract NIT using regex pattern similar to Python script
+    console.log(`Calling SerpApi for query: ${searchQuery}`);
+
+    // Make request to SerpApi
+    const response = await fetch(serpApiUrl);
+
+    if (!response.ok) {
+      throw new Error(`SerpApi request failed with status: ${response.status}`);
+    }
+
+    const searchResults = await response.json();
+    console.log(`Received SerpApi response`);
+
+    // Extract NIT from organic results
     // Pattern: NIT followed by optional colon/period, then digits with optional commas/periods and a dash
     const nitPattern = /NIT\s*[:.]?\s*([\d,\.]+\-\d+)/gi;
-    const matches = htmlText.match(nitPattern);
+    
+    let nitValue = null;
 
-    if (!matches || matches.length === 0) {
+    // Search in organic results
+    if (searchResults.organic_results) {
+      for (const result of searchResults.organic_results) {
+        // Check in snippet
+        if (result.snippet) {
+          const match = result.snippet.match(nitPattern);
+          if (match) {
+            const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
+            if (valueMatch) {
+              nitValue = valueMatch[1];
+              console.log(`Found NIT in snippet: ${nitValue}`);
+              break;
+            }
+          }
+        }
+        
+        // Check in title if not found in snippet
+        if (!nitValue && result.title) {
+          const match = result.title.match(nitPattern);
+          if (match) {
+            const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
+            if (valueMatch) {
+              nitValue = valueMatch[1];
+              console.log(`Found NIT in title: ${nitValue}`);
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    // Check answer box if not found in organic results
+    if (!nitValue && searchResults.answer_box) {
+      const answerText = JSON.stringify(searchResults.answer_box);
+      const match = answerText.match(nitPattern);
+      if (match) {
+        const valueMatch = match[0].match(/([\d,\.]+\-\d+)/);
+        if (valueMatch) {
+          nitValue = valueMatch[1];
+          console.log(`Found NIT in answer box: ${nitValue}`);
+        }
+      }
+    }
+
+    if (!nitValue) {
       console.log('No NIT found in search results');
       return new Response(
         JSON.stringify({ 
@@ -68,25 +112,6 @@ serve(async (req) => {
       );
     }
 
-    // Extract the actual NIT value from the first match
-    const firstMatch = matches[0];
-    const nitValueMatch = firstMatch.match(/([\d,\.]+\-\d+)/);
-    
-    if (!nitValueMatch) {
-      console.log('Could not extract NIT value from match');
-      return new Response(
-        JSON.stringify({ 
-          error: 'No se pudo extraer el valor del NIT',
-          nit: null 
-        }),
-        { 
-          status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        }
-      );
-    }
-
-    const nitValue = nitValueMatch[1];
     console.log(`Successfully extracted NIT: ${nitValue}`);
 
     return new Response(
