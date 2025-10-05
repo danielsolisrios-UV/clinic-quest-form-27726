@@ -322,48 +322,74 @@ const FormularioClinicoGamificado = () => {
       // El NIT puede tener 10 dígitos (con verificación), intentar con los primeros 9
       const nitBase = nit.substring(0, 9);
       
-      // Intentar cargar el archivo JSON correspondiente desde public/data
-      const response = await fetch(`/data/${nitBase}_sedes.json`);
+      // Intentar cargar el archivo JSON de sedes
+      const sedesResponse = await fetch(`/data/${nitBase}_sedes.json`);
       
-      if (!response.ok) {
-        // El archivo no existe, no hacer nada
-        return;
+      if (sedesResponse.ok) {
+        const sedesJsonData = await sedesResponse.json();
+        
+        if (sedesJsonData.datos && Array.isArray(sedesJsonData.datos)) {
+          // Autocompletar número de sedes
+          const numeroSedes = sedesJsonData.numero_de_sedes || sedesJsonData.datos.length;
+          handleInputChange('informacionGeneral', 'numeroSedes', numeroSedes.toString());
+
+          // Crear array de sedes con los datos del JSON
+          const sedesData: Sede[] = sedesJsonData.datos.map((sede: any) => {
+            // Validar y corregir departamento/ciudad
+            const { departamento, ciudad } = validateAndFixLocation(
+              sede.departamento || '',
+              sede.municipio || ''
+            );
+
+            return {
+              nombreSede: sede.nombre_de_la_sede || '',
+              departamento: departamento,
+              ciudad: ciudad,
+              direccion: sede.direccion || '',
+            };
+          });
+
+          // Actualizar el formulario con los datos de las sedes
+          setFormData(prev => ({
+            ...prev,
+            sedes: sedesData
+          }));
+
+          toast.success('Datos de sedes cargados correctamente');
+        }
       }
 
-      const jsonData = await response.json();
+      // Intentar cargar el archivo JSON de servicios
+      const serviciosResponse = await fetch(`/data/${nitBase}_servicios.json`);
       
-      if (!jsonData.datos || !Array.isArray(jsonData.datos)) {
-        return;
+      if (serviciosResponse.ok) {
+        const serviciosJsonData = await serviciosResponse.json();
+        
+        if (serviciosJsonData.datos && Array.isArray(serviciosJsonData.datos)) {
+          // Crear array de servicios habilitados con los datos del JSON
+          const serviciosData: ServicioHabilitado[] = serviciosJsonData.datos.map((servicio: any) => {
+            // Normalizar el campo ambulatorio: "SI", "SD" -> "SI", otros -> dejar como está
+            let ambulatorioValue = servicio.ambulatorio || '';
+            if (ambulatorioValue.toUpperCase() === 'SD') {
+              ambulatorioValue = 'SI';
+            }
+
+            return {
+              nombreServicio: servicio.serv_nombre || '',
+              ambulatorio: ambulatorioValue,
+              nombreSede: servicio.sede_nombre || '',
+            };
+          });
+
+          // Actualizar el formulario con los datos de servicios
+          setFormData(prev => ({
+            ...prev,
+            serviciosHabilitados: serviciosData
+          }));
+
+          toast.success('Datos de servicios habilitados cargados correctamente');
+        }
       }
-
-      // Autocompletar número de sedes
-      const numeroSedes = jsonData.numero_de_sedes || jsonData.datos.length;
-      handleInputChange('informacionGeneral', 'numeroSedes', numeroSedes.toString());
-
-      // Crear array de sedes con los datos del JSON
-      const sedesData: Sede[] = jsonData.datos.map((sede: any) => {
-        // Validar y corregir departamento/ciudad
-        const { departamento, ciudad } = validateAndFixLocation(
-          sede.departamento || '',
-          sede.municipio || ''
-        );
-
-        return {
-          nombreSede: sede.nombre_de_la_sede || '',
-          departamento: departamento,
-          ciudad: ciudad,
-          direccion: sede.direccion || '',
-          // El campo gerente no existe en la estructura de Sede, pero podríamos agregarlo como nota
-        };
-      });
-
-      // Actualizar el formulario con los datos de las sedes
-      setFormData(prev => ({
-        ...prev,
-        sedes: sedesData
-      }));
-
-      toast.success('Datos cargados correctamente desde el archivo');
     } catch (error) {
       console.error('Error al cargar datos desde JSON:', error);
       // No mostrar error al usuario ya que puede ser normal que no exista el archivo
