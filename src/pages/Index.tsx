@@ -496,6 +496,48 @@ const FormularioClinicoGamificado = () => {
             capacidadMapeada.consultaExternaMedicinaGeneral = consultoriosExterna.toString();
           }
 
+          // Consulta Externa (Odontología)
+          const consultoriosOdontologia = sumCantidades('CONSULTORIOS', ['Odontologia', 'Odontología']);
+          if (consultoriosOdontologia > 0) {
+            capacidadMapeada.consultaExternaOdontologia = consultoriosOdontologia.toString();
+          }
+
+          // Consulta Externa (Pediatría)
+          const consultoriosPediatria = sumCantidades('CONSULTORIOS', ['Pediatria', 'Pediátrica']);
+          if (consultoriosPediatria > 0) {
+            capacidadMapeada.consultaExternaPediatria = consultoriosPediatria.toString();
+          }
+
+          // Consulta Externa Especializada
+          const consultoriosEspecializados = sumCantidades('CONSULTORIOS', ['Especializada', 'Especializado']);
+          if (consultoriosEspecializados > 0) {
+            capacidadMapeada.consultaExternaEspecializada = consultoriosEspecializados.toString();
+          }
+
+          // Consulta Prioritaria
+          const consultoriosPrioritaria = sumCantidades('CONSULTORIOS', ['Prioritaria', 'Prioritario']);
+          if (consultoriosPrioritaria > 0) {
+            capacidadMapeada.consultaPrioritaria = consultoriosPrioritaria.toString();
+          }
+
+          // Consultorías Uroginecología
+          const consultoriasUro = sumCantidades('CONSULTORIOS', ['Uroginecologia', 'Urologia', 'Ginecologia']);
+          if (consultoriasUro > 0) {
+            capacidadMapeada.consultoriasUroginecologia = consultoriasUro.toString();
+          }
+
+          // Consultorías IRAS Amb Centros
+          const consultoriasIrasAmb = sumCantidades('CONSULTORIOS', ['IRAS', 'Ambulatorio']);
+          if (consultoriasIrasAmb > 0) {
+            capacidadMapeada.consultoriasIrasAmbCentros = consultoriasIrasAmb.toString();
+          }
+
+          // Consultorías IRAS HC Centros
+          const consultoriasIrasHc = sumCantidades('CONSULTORIOS', ['IRAS', 'HC', 'Hospital']);
+          if (consultoriasIrasHc > 0) {
+            capacidadMapeada.consultoriasIrasHcCentros = consultoriasIrasHc.toString();
+          }
+
           // Camas de Cuidado Intermedio e Intensivo
           const camasCuidadoIntermedio = sumCantidades('CAMAS', ['Intermedia', 'Intensiva', 'Intensivo']);
           if (camasCuidadoIntermedio > 0) {
@@ -520,6 +562,74 @@ const FormularioClinicoGamificado = () => {
           if (camasParto > 0) {
             capacidadMapeada.obstetriciaParto = camasParto.toString();
           }
+
+          // Ginecología Hospitalaria
+          const camasGinecologia = sumCantidades('CAMAS', ['Ginecologia', 'Ginecología']);
+          if (camasGinecologia > 0) {
+            capacidadMapeada.ginecologiaHospitalaria = camasGinecologia.toString();
+          }
+
+          // Sintomatología COVID
+          const sintomatologiaCovid = sumCantidades('CONSULTORIOS', ['COVID', 'Sintomatologia', 'Sintomatología']);
+          if (sintomatologiaCovid > 0) {
+            capacidadMapeada.sintomatologiaCovid = sintomatologiaCovid.toString();
+          } else {
+            capacidadMapeada.sintomatologiaCovid = '0';
+          }
+
+          // Inmunización
+          const inmunizacion = sumCantidades('CONSULTORIOS', ['Inmunizacion', 'Inmunización', 'Vacunacion', 'Vacunación']);
+          if (inmunizacion > 0) {
+            capacidadMapeada.inmunizacion = inmunizacion.toString();
+          } else {
+            capacidadMapeada.inmunizacion = '0';
+          }
+
+          // Unificación Datos (asignar un valor por defecto)
+          capacidadMapeada.unificacionDatos = 'SI';
+
+          // Via RCM - Valores por defecto basados en si es una institución activa
+          capacidadMapeada.admision = 'SI';
+          capacidadMapeada.contrataciones = 'SI';
+          capacidadMapeada.cuentasMedicas = 'SI';
+          capacidadMapeada.cuentasPaciente = 'SI';
+          capacidadMapeada.referenciasAutorizaciones = 'SI';
+          capacidadMapeada.autorizador = 'SI';
+
+          // Via ERP - Valores por defecto
+          capacidadMapeada.farmacia = 'SI';
+          capacidadMapeada.proveedores = 'SI';
+          capacidadMapeada.administracionRecursos = 'SI';
+          capacidadMapeada.activosFijos = 'SI';
+          capacidadMapeada.centrosCosto = 'SI';
+          capacidadMapeada.administracionInfraestructura = 'SI';
+          capacidadMapeada.almacenGeneral = 'SI';
+          capacidadMapeada.mantenimientoFisico = 'SI';
+
+          // General
+          capacidadMapeada.multiEmpresa = 'SI';
+          capacidadMapeada.multiSede = 'SI';
+          capacidadMapeada.indiceCloud = 'SI';
+          capacidadMapeada.lanzadorEcosistemas = 'SI';
+
+          // VIE Finance
+          capacidadMapeada.contabilidad = '1';
+          capacidadMapeada.facturacion = '1';
+
+          // VIE HCM
+          // Usar el número de empleados de información general si está disponible
+          const numEmpleados = (formData.informacionGeneral as any).cantidadEmpleados || '0';
+          capacidadMapeada.empleadosNomina = numEmpleados;
+          capacidadMapeada.numeroEmpleados = numEmpleados;
+          capacidadMapeada.portalEmpleados = '1';
+          capacidadMapeada.recortabilidad24h = 'SI';
+          capacidadMapeada.porcentaje401 = '99';
+
+          // Índice Electrónico
+          capacidadMapeada.numeroElectronico = '1';
+
+          // IndiGO Storage
+          capacidadMapeada.textoAlmacenamiento = 'Almacenamiento en la nube';
 
           // Actualizar el formulario con los datos de capacidad instalada
           if (Object.keys(capacidadMapeada).length > 0) {
