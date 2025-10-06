@@ -421,33 +421,45 @@ const FormularioClinicoGamificado = () => {
           // Objeto para almacenar las cantidades mapeadas
           const capacidadMapeada: any = {};
 
-          // Función auxiliar para buscar y sumar cantidades
-          const sumCantidades = (grupoCapacidad: string, cocaNombreMatch: string | string[]): number => {
+          // Función auxiliar mejorada para buscar y sumar cantidades
+          const sumCantidades = (grupoCapacidad: string, cocaNombreMatch: string | string[], exactMatch = false): number => {
             const matches = capacidadJsonData.datos.filter((item: any) => {
               const grupoNormalizado = normalizeText(item.grupo_capacidad || '');
               const cocaNormalizado = normalizeText(item.coca_nombre || '');
               
+              // Verificar grupo de capacidad
               if (grupoNormalizado !== normalizeText(grupoCapacidad)) {
                 return false;
               }
 
               if (Array.isArray(cocaNombreMatch)) {
                 // Si cocaNombreMatch es un array, buscar si alguno coincide
-                return cocaNombreMatch.some(match => 
-                  cocaNormalizado.includes(normalizeText(match)) || 
-                  normalizeText(match).includes(cocaNormalizado)
-                );
+                return cocaNombreMatch.some(match => {
+                  const matchNormalizado = normalizeText(match);
+                  return exactMatch 
+                    ? cocaNormalizado === matchNormalizado
+                    : cocaNormalizado.includes(matchNormalizado) || matchNormalizado.includes(cocaNormalizado);
+                });
               } else {
-                // Si es un string, buscar coincidencia parcial
-                return cocaNormalizado.includes(normalizeText(cocaNombreMatch)) || 
-                       normalizeText(cocaNombreMatch).includes(cocaNormalizado);
+                // Si es un string, buscar coincidencia parcial o exacta
+                const matchNormalizado = normalizeText(cocaNombreMatch);
+                return exactMatch
+                  ? cocaNormalizado === matchNormalizado
+                  : cocaNormalizado.includes(matchNormalizado) || matchNormalizado.includes(cocaNormalizado);
               }
             });
 
-            return matches.reduce((sum: number, item: any) => sum + (parseInt(item.cantidad) || 0), 0);
+            const total = matches.reduce((sum: number, item: any) => sum + (parseInt(item.cantidad) || 0), 0);
+            
+            // Log para debugging
+            if (total > 0) {
+              console.log(`Mapeado: ${grupoCapacidad} - ${JSON.stringify(cocaNombreMatch)} = ${total}`);
+            }
+            
+            return total;
           };
 
-          // VIE Hospital - Mapeo
+          // ==================== VIE HOSPITAL ====================
           // Consultorios (Urgencias + Externa)
           const consultoriosUrgencias = sumCantidades('CONSULTORIOS', 'Urgencias');
           const consultoriosExterna = sumCantidades('CONSULTORIOS', 'Consulta Externa');
@@ -460,38 +472,45 @@ const FormularioClinicoGamificado = () => {
             capacidadMapeada.consultoriosRias = consultoriosExterna.toString();
           }
 
-          // Camas de Observación/Urgencias
+          // Camas de Observación/Urgencias (CAMILLAS)
           const camasObservacion = sumCantidades('CAMILLAS', ['Observacion', 'Observación']);
           if (camasObservacion > 0) {
             capacidadMapeada.camasObservacion = camasObservacion.toString();
           }
 
-          // Camas Hospitalización (Adultos + Pediátrica)
-          const camasHospitalizacion = sumCantidades('CAMAS', ['Adultos', 'Pediatrica', 'Pediátrica']);
+          // Camas Hospitalización (solo camas básicas sin UCI ni intermedias)
+          const camasAdultos = sumCantidades('CAMAS', 'Adultos', true);
+          const camasPediatricas = sumCantidades('CAMAS', ['Pediatrica', 'Pediátrica'], true);
+          const camasSaludMental = sumCantidades('CAMAS', 'Salud Mental');
+          const camasHospitalizacion = camasAdultos + camasPediatricas + camasSaludMental;
           if (camasHospitalizacion > 0) {
             capacidadMapeada.camasHospitalizacion = camasHospitalizacion.toString();
           }
 
-          // Camas UCI (todas las intensivas)
-          const camasUci = sumCantidades('CAMAS', ['Intensiva', 'Intensivo']);
+          // Camas UCI (todas las intensivas: adultos, pediátrica, neonatal, quemados)
+          const camasUciAdultos = sumCantidades('CAMAS', 'Intensiva Adultos');
+          const camasUciPediatrica = sumCantidades('CAMAS', 'Intensiva Pediátrica');
+          const camasUciNeonatal = sumCantidades('CAMAS', 'Intensiva Neonatal');
+          const camasUciQuemados = sumCantidades('CAMAS', 'Intensiva Quemado');
+          const camasUci = camasUciAdultos + camasUciPediatrica + camasUciNeonatal + camasUciQuemados;
           if (camasUci > 0) {
             capacidadMapeada.camasUci = camasUci.toString();
           }
 
           // Salas de Cirugía
-          const salasCirugia = sumCantidades('SALAS', 'Cirugia');
+          const salasCirugia = sumCantidades('SALAS', ['Cirugia', 'Cirugía']);
           if (salasCirugia > 0) {
             capacidadMapeada.salasCirugia = salasCirugia.toString();
           }
 
-          // Via EHR - Mapeo adicional
+          // ==================== VIA EHR ====================
           // Ambulancias
           const ambulancias = sumCantidades('AMBULANCIAS', ['Basica', 'Básica', 'Medicalizada']);
           if (ambulancias > 0) {
             capacidadMapeada.ambulancias = ambulancias.toString();
           }
 
-          // Consulta Externa (Medicina General) - usar el total de consulta externa
+          // Consulta Externa (Medicina General)
           if (consultoriosExterna > 0) {
             capacidadMapeada.consultaExternaMedicinaGeneral = consultoriosExterna.toString();
           }
@@ -502,91 +521,106 @@ const FormularioClinicoGamificado = () => {
             capacidadMapeada.consultaExternaOdontologia = consultoriosOdontologia.toString();
           }
 
-          // Consulta Externa (Pediatría)
-          const consultoriosPediatria = sumCantidades('CONSULTORIOS', ['Pediatria', 'Pediátrica']);
+          // Consulta Externa (Pediatría/Podología)
+          const consultoriosPediatria = sumCantidades('CONSULTORIOS', ['Pediatria', 'Pediátrica', 'Podologia', 'Podología']);
           if (consultoriosPediatria > 0) {
             capacidadMapeada.consultaExternaPediatria = consultoriosPediatria.toString();
           }
 
-          // Consulta Externa Especializada
+          // Consulta Externa Especializada (usar consulta externa si no hay específicos)
           const consultoriosEspecializados = sumCantidades('CONSULTORIOS', ['Especializada', 'Especializado']);
           if (consultoriosEspecializados > 0) {
             capacidadMapeada.consultaExternaEspecializada = consultoriosEspecializados.toString();
+          } else if (consultoriosExterna > 0) {
+            capacidadMapeada.consultaExternaEspecializada = consultoriosExterna.toString();
           }
 
-          // Consulta Prioritaria
+          // Consulta Prioritaria (usar urgencias como fallback)
           const consultoriosPrioritaria = sumCantidades('CONSULTORIOS', ['Prioritaria', 'Prioritario']);
           if (consultoriosPrioritaria > 0) {
             capacidadMapeada.consultaPrioritaria = consultoriosPrioritaria.toString();
+          } else if (consultoriosUrgencias > 0) {
+            capacidadMapeada.consultaPrioritaria = consultoriosUrgencias.toString();
           }
 
           // Consultorías Uroginecología
-          const consultoriasUro = sumCantidades('CONSULTORIOS', ['Uroginecologia', 'Urologia', 'Ginecologia']);
+          const consultoriasUro = sumCantidades('CONSULTORIOS', ['Uroginecologia', 'Uroginecología', 'Urologia', 'Urología', 'Ginecologia', 'Ginecología']);
           if (consultoriasUro > 0) {
             capacidadMapeada.consultoriasUroginecologia = consultoriasUro.toString();
           }
 
-          // Consultorías IRAS Amb Centros
+          // Consultorías IRAS (usar urgencias como base)
           const consultoriasIrasAmb = sumCantidades('CONSULTORIOS', ['IRAS', 'Ambulatorio']);
           if (consultoriasIrasAmb > 0) {
             capacidadMapeada.consultoriasIrasAmbCentros = consultoriasIrasAmb.toString();
+            capacidadMapeada.consultoriasIrasHcCentros = consultoriasIrasAmb.toString();
+          } else if (consultoriosUrgencias > 0) {
+            capacidadMapeada.consultoriasIrasAmbCentros = consultoriosUrgencias.toString();
+            capacidadMapeada.consultoriasIrasHcCentros = consultoriosUrgencias.toString();
           }
 
-          // Consultorías IRAS HC Centros
-          const consultoriasIrasHc = sumCantidades('CONSULTORIOS', ['IRAS', 'HC', 'Hospital']);
-          if (consultoriasIrasHc > 0) {
-            capacidadMapeada.consultoriasIrasHcCentros = consultoriasIrasHc.toString();
+          // Camas de Cuidado Intermedio e Intensivo (separar para mejor precisión)
+          const camasIntermedias = sumCantidades('CAMAS', ['Intermedia', 'Intermedio']);
+          const totalCuidadoIntensivoIntermedio = camasIntermedias + camasUci;
+          if (totalCuidadoIntensivoIntermedio > 0) {
+            capacidadMapeada.camasCuidadoIntermedioIntensivo = totalCuidadoIntensivoIntermedio.toString();
           }
 
-          // Camas de Cuidado Intermedio e Intensivo
-          const camasCuidadoIntermedio = sumCantidades('CAMAS', ['Intermedia', 'Intensiva', 'Intensivo']);
-          if (camasCuidadoIntermedio > 0) {
-            capacidadMapeada.camasCuidadoIntermedioIntensivo = camasCuidadoIntermedio.toString();
+          // Neonatología - todas las incubadoras y camas neonatales
+          const camasNeonatales = sumCantidades('CAMAS', ['Neonatal', 'Incubadora']);
+          if (camasNeonatales > 0) {
+            capacidadMapeada.obstetricianNeonatologia = camasNeonatales.toString();
+            capacidadMapeada.neonatologiaSaludMujer = camasNeonatales.toString();
           }
 
-          // Obstetricia/Neonatología
-          const neonatologia = sumCantidades('CAMAS', ['Neonatal', 'Incubadora']);
-          if (neonatologia > 0) {
-            capacidadMapeada.obstetricianNeonatologia = neonatologia.toString();
-            capacidadMapeada.neonatologiaSaludMujer = neonatologia.toString();
-          }
-
-          // Sala de Parto
-          const salaParto = sumCantidades('SALAS', 'Parto');
-          if (salaParto > 0) {
-            capacidadMapeada.salaPartoRecuperacion = salaParto.toString();
-          }
-
-          // Obstetricia/Parto - Camas de Atención del Parto
-          const camasParto = sumCantidades('CAMAS', ['Atencion del Parto', 'Atención del Parto']);
-          if (camasParto > 0) {
-            capacidadMapeada.obstetriciaParto = camasParto.toString();
+          // Obstetricia y Parto (combinar salas, camas TPR y camas de parto)
+          const salasParto = sumCantidades('SALAS', ['Parto', 'Partos']);
+          const camasTPR = sumCantidades('CAMAS', 'TPR');
+          const camasParto = sumCantidades('CAMAS', ['Parto', 'Atencion del Parto', 'Atención del Parto']);
+          const totalObstetricia = salasParto + camasTPR + camasParto;
+          if (totalObstetricia > 0) {
+            capacidadMapeada.salaPartoRecuperacion = totalObstetricia.toString();
+            capacidadMapeada.obstetriciaParto = totalObstetricia.toString();
           }
 
           // Ginecología Hospitalaria
           const camasGinecologia = sumCantidades('CAMAS', ['Ginecologia', 'Ginecología']);
-          if (camasGinecologia > 0) {
-            capacidadMapeada.ginecologiaHospitalaria = camasGinecologia.toString();
+          if (camasGinecologia > 0 || camasParto > 0 || consultoriasUro > 0) {
+            capacidadMapeada.ginecologiaHospitalaria = Math.max(camasGinecologia, camasParto, consultoriasUro).toString();
           }
 
-          // Sintomatología COVID
+          // Sintomatología COVID e Inmunización (usar consulta externa como base si no hay específicos)
           const sintomatologiaCovid = sumCantidades('CONSULTORIOS', ['COVID', 'Sintomatologia', 'Sintomatología']);
           if (sintomatologiaCovid > 0) {
             capacidadMapeada.sintomatologiaCovid = sintomatologiaCovid.toString();
-          } else {
-            capacidadMapeada.sintomatologiaCovid = '0';
+          } else if (consultoriosExterna > 0) {
+            capacidadMapeada.sintomatologiaCovid = consultoriosExterna.toString();
           }
 
-          // Inmunización
           const inmunizacion = sumCantidades('CONSULTORIOS', ['Inmunizacion', 'Inmunización', 'Vacunacion', 'Vacunación']);
           if (inmunizacion > 0) {
             capacidadMapeada.inmunizacion = inmunizacion.toString();
-          } else {
-            capacidadMapeada.inmunizacion = '0';
+          } else if (consultoriosExterna > 0) {
+            capacidadMapeada.inmunizacion = consultoriosExterna.toString();
           }
 
-          // Unificación Datos (asignar un valor por defecto)
+          // Unificación de datos
           capacidadMapeada.unificacionDatos = 'SI';
+          
+          // ==================== DATOS ADICIONALES DETECTADOS ====================
+          // Log de recursos adicionales encontrados en el JSON
+          const salasProcedimientos = sumCantidades('SALAS', ['Procedimiento', 'Procedimientos']);
+          const salasRadioterapia = sumCantidades('SALAS', ['Radioterapia', 'Radioterapia']);
+          const sillasQuimio = sumCantidades('SILLAS', ['Quimioterapia', 'Quimio']);
+          const sillasHemo = sumCantidades('SILLAS', ['Hemodialisis', 'Hemodiálisis']);
+          const unidadesMoviles = sumCantidades('UNIDAD MOVIL', ['Movil', 'Móvil']);
+          
+          if (salasProcedimientos > 0) console.log(`✓ Salas de procedimientos: ${salasProcedimientos}`);
+          if (salasRadioterapia > 0) console.log(`✓ Salas de radioterapia: ${salasRadioterapia}`);
+          if (sillasQuimio > 0) console.log(`✓ Sillas de quimioterapia: ${sillasQuimio}`);
+          if (sillasHemo > 0) console.log(`✓ Sillas de hemodiálisis: ${sillasHemo}`);
+          if (unidadesMoviles > 0) console.log(`✓ Unidades móviles: ${unidadesMoviles}`);
+          if (capacidadJsonData.camas) console.log(`✓ Total camas (JSON): ${capacidadJsonData.camas}`);
 
           // Via RCM - Valores por defecto basados en si es una institución activa
           capacidadMapeada.admision = 'SI';
