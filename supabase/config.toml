@@ -1,1 +1,4 @@
-project_id = "skwbvtrgnkhftmwjbacv"
+project_id = "bbonqzewcqxjchbgoxza"
+
+[functions.search-nit]
+verify_jwt = false
