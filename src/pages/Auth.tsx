@@ -10,6 +10,8 @@ import { toast } from 'sonner';
 import { Lock, Mail, User, LogIn, UserPlus, Loader2, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
 import indigoLogo from '/Indigo.png';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 // Validation schemas
 const signUpSchema = z.object({
@@ -148,16 +150,56 @@ const Auth = () => {
     }
   };
 
+  const logos = [
+    { src: '/logos/genexia-negro.png', alt: 'Genexia' },
+    { src: '/logos/indira.png', alt: 'Indira' },
+    { src: '/logos/coral-01.png', alt: 'Coral' },
+    { src: '/logos/coral-03.png', alt: 'Coral EHR' },
+    { src: '/logos/oneview-negro.png', alt: 'One View' },
+    { src: '/logos/vie.png', alt: 'Vie' }
+  ];
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-6">
             <img 
               src={indigoLogo} 
               alt="IndiGO Logo" 
               className="h-40 w-auto object-contain drop-shadow-2xl animate-float"
             />
+          </div>
+
+          {/* Logo Carousel */}
+          <div className="bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 rounded-2xl p-6 shadow-inner">
+            <Carousel
+              opts={{
+                align: 'start',
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 2000,
+                  stopOnInteraction: false,
+                })
+              ]}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2">
+                {logos.map((logo, index) => (
+                  <CarouselItem key={index} className="pl-2 basis-1/3">
+                    <div className="flex items-center justify-center h-16 p-2 bg-white/50 rounded-lg backdrop-blur-sm hover:bg-white/70 transition-all duration-300">
+                      <img 
+                        src={logo.src} 
+                        alt={logo.alt}
+                        className="max-h-12 w-auto object-contain filter drop-shadow-sm"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
 
