@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Award, Download, CheckCircle, Building2, MapPin, Stethoscope, Activity, Star, Trophy, Lock, Save, LogOut, Loader2, Search } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Award, Download, CheckCircle, Building2, MapPin, Stethoscope, Activity, Star, Trophy, Lock, Save, LogOut, Loader2, Search, Info } from 'lucide-react';
 import { departamentos, municipiosPorDepartamento } from '@/data/colombiaData';
 import { toast } from 'sonner';
 import { useAuth } from '@/hooks/useAuth';
@@ -138,6 +138,8 @@ const FormularioClinicoGamificado = () => {
   const [saveTimeout, setSaveTimeout] = useState<NodeJS.Timeout | null>(null);
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [isSearchingNit, setIsSearchingNit] = useState(false);
+  const [showSearchInstructions, setShowSearchInstructions] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
 
   // Validación y formato de campos numéricos
   const validateNumericField = (value: string, fieldType: 'integer' | 'phone' | 'nit'): { isValid: boolean; error?: string } => {
@@ -247,7 +249,18 @@ const FormularioClinicoGamificado = () => {
       return;
     }
 
+    // Mostrar modal de advertencia antes de buscar
+    setShowWarningModal(true);
+  };
+
+  // Función que se ejecuta después de que el usuario confirma el modal
+  const executeSearch = async () => {
+    setShowWarningModal(false);
     setIsSearchingNit(true);
+    
+    const nitValue = (formData.informacionGeneral as any).nit;
+    const razonSocial = (formData.informacionGeneral as any).razonSocial;
+    
     try {
       // 1) Si ya hay NIT ingresado, usarlo directamente para cargar los JSON
       if (nitValue && nitValue.trim() !== '') {
@@ -1096,14 +1109,47 @@ const FormularioClinicoGamificado = () => {
             </select>
           </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-foreground mb-1">Razón Social *</label>
+          <div className="flex items-center gap-2 mb-1">
+            <label className="block text-sm font-medium text-foreground">Razón Social *</label>
+            <button
+              type="button"
+              onClick={() => setShowSearchInstructions(!showSearchInstructions)}
+              className="p-1 hover:bg-accent rounded-full transition-colors"
+              title="Ver instrucciones de búsqueda"
+            >
+              <Info className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+            </button>
+          </div>
+          
+          {showSearchInstructions && (
+            <div className="mb-3 p-4 bg-muted/50 border border-border rounded-lg space-y-2 animate-fade-in">
+              <div className="flex items-start gap-2">
+                <Info className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p className="font-semibold text-foreground">💡 Instrucciones de búsqueda:</p>
+                  <ul className="list-disc list-inside space-y-1 ml-2">
+                    <li>Ingrese la razón social completa o parcial de la institución</li>
+                    <li>El sistema extraerá automáticamente el NIT asociado</li>
+                    <li>Se mostrarán todos los datos disponibles en el REPS:</li>
+                  </ul>
+                  <ul className="list-none ml-6 space-y-1 text-xs">
+                    <li>• Información básica de la institución</li>
+                    <li>• Servicios habilitados</li>
+                    <li>• Estado del registro</li>
+                    <li>• Capacidad instalada</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+          
           <div className="flex gap-2">
             <input
               type="text"
               className="flex-1 px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-primary"
               value={(formData.informacionGeneral as any).razonSocial || ''}
               onChange={(e) => handleInputChange('informacionGeneral', 'razonSocial', e.target.value)}
-              placeholder="Ingrese la razón social"
+              placeholder="Ej: Hospital Universitario San Vicente..."
             />
             <button
               type="button"
@@ -2093,6 +2139,35 @@ const FormularioClinicoGamificado = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-8 px-4">
+      {/* Modal de advertencia REPS */}
+      <AlertDialog open={showWarningModal} onOpenChange={setShowWarningModal}>
+        <AlertDialogContent className="max-w-md">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex items-center gap-2 text-primary">
+              <Info className="h-5 w-5" />
+              Información del REPS
+            </AlertDialogTitle>
+            <AlertDialogDescription className="space-y-3 text-foreground">
+              <p>
+                Los datos mostrados corresponden a la última actualización oficial del <strong>Registro Especial de Prestadores de Servicios de Salud (REPS)</strong>.
+              </p>
+              <p>
+                La información puede estar sujeta a cambios según las actualizaciones del registro.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Por favor, verifique la información mostrada.
+              </p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={executeSearch} className="bg-primary hover:bg-primary/90">
+              Continuar con la búsqueda
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      
       {/* Achievement Notification */}
       {showAchievement && (() => {
         const AchievementIcon = showAchievement.icon;
