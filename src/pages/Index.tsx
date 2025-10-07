@@ -382,6 +382,14 @@ const FormularioClinicoGamificado = () => {
             };
           });
 
+          // Llenar Información General con datos de la primera sede
+          const primeraSede = sedesJsonData.datos[0];
+          if (primeraSede) {
+            handleInputChange('informacionGeneral', 'nombreGerente', primeraSede.gerente || '');
+            handleInputChange('informacionGeneral', 'departamento', sedesData[0].departamento || '');
+            handleInputChange('informacionGeneral', 'municipio', sedesData[0].ciudad || '');
+          }
+
           // Actualizar el formulario con los datos de las sedes
           setFormData(prev => ({
             ...prev,
