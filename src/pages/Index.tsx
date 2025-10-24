@@ -1482,7 +1482,7 @@ const FormularioClinicoGamificado = () => {
                   }}
                 />
               </div>
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">Ambulatorio</label>
               <select
                 className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-accent"
@@ -1490,22 +1490,6 @@ const FormularioClinicoGamificado = () => {
                 onChange={(e) => {
                   const newServicios = [...formData.serviciosHabilitados];
                   newServicios[index].ambulatorio = e.target.value;
-                  setFormData({ ...formData, serviciosHabilitados: newServicios });
-                }}
-              >
-                <option value="">Seleccione</option>
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-1">Internación</label>
-              <select
-                className="w-full px-3 py-2 border border-input bg-background rounded-lg focus:ring-2 focus:ring-accent"
-                value={servicio.internacion || ''}
-                onChange={(e) => {
-                  const newServicios = [...formData.serviciosHabilitados];
-                  newServicios[index].internacion = e.target.value;
                   setFormData({ ...formData, serviciosHabilitados: newServicios });
                 }}
               >
