@@ -106,9 +106,15 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     if (!emailResponse.ok) {
-      const errorData = await emailResponse.text();
-      console.error("Error sending email:", errorData);
-      throw new Error("Error al enviar el correo");
+      const errorData = await emailResponse.json().catch(() => ({ message: "Unknown error" }));
+      console.error("Resend API error:", errorData);
+      
+      // Check if it's a domain verification error
+      if (errorData.statusCode === 403 && errorData.message?.includes("verify a domain")) {
+        throw new Error("Configuración de email pendiente. Verifica tu dominio en Resend para enviar correos.");
+      }
+      
+      throw new Error("Error al enviar el correo. Verifica la configuración de Resend.");
     }
 
     const emailData = await emailResponse.json();
