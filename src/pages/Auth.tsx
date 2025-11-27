@@ -12,6 +12,7 @@ import { z } from 'zod';
 import indigoLogo from '/Indigo.png';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { ForgotPassword } from '@/components/auth/ForgotPassword';
 
 // Validation schemas
 const signUpSchema = z.object({
@@ -46,6 +47,7 @@ const Auth = () => {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -159,6 +161,14 @@ const Auth = () => {
     { src: '/logos/vie.png', alt: 'Vie' }
   ];
 
+  if (showForgotPassword) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 p-4">
+        <ForgotPassword onBack={() => setShowForgotPassword(false)} />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-indigo-100 p-4">
       <div className="w-full max-w-md">
@@ -262,6 +272,17 @@ const Auth = () => {
                       </button>
                     </div>
                     {errors.password && <p className="text-sm text-destructive">{errors.password}</p>}
+                  </div>
+
+                  <div className="text-right">
+                    <Button
+                      type="button"
+                      variant="link"
+                      className="text-sm text-indigo-600 hover:text-indigo-800 p-0 h-auto"
+                      onClick={() => setShowForgotPassword(true)}
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </Button>
                   </div>
 
                   <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-200" disabled={isLoading}>

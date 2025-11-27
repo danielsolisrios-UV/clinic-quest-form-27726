@@ -2,3 +2,12 @@ project_id = "bbonqzewcqxjchbgoxza"
 
 [functions.search-nit]
 verify_jwt = false
+
+[functions.forgot-password]
+verify_jwt = false
+
+[functions.verify-reset-code]
+verify_jwt = false
+
+[functions.reset-password]
+verify_jwt = false
