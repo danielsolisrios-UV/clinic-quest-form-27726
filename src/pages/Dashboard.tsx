@@ -18,7 +18,7 @@ const Dashboard = () => {
       title: "Visualización de Gestión de Tickets",
       description: "Mantén el control total. La excelencia en el servicio comienza con una gestión transparente y eficiente de cada solicitud.",
       icon: TicketCheck,
-      route: "/tickets",
+      externalUrl: "https://indigocolombia.zendesk.com/auth/v2/login/signin?auth_origin=2525076%2Ctrue%2Ctrue&brand_id=2525076&locale=2&return_to=https%3A%2F%2Findigocolombia.zendesk.com%2F&role=consumer&theme=hc",
       gradient: "from-accent to-secondary",
     },
     {
@@ -88,7 +88,13 @@ const Dashboard = () => {
                 key={card.id}
                 className="group cursor-pointer animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => navigate(card.route)}
+                onClick={() => {
+                  if ('externalUrl' in card && card.externalUrl) {
+                    window.open(card.externalUrl, '_blank');
+                  } else if ('route' in card && card.route) {
+                    navigate(card.route);
+                  }
+                }}
               >
                 <div className="relative h-full bg-card rounded-2xl border border-border shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group-hover:-translate-y-2">
                   {/* Gradient Background */}
